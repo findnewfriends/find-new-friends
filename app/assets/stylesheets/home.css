@@ -6,6 +6,9 @@
 #titlePresentation{
   color: #5a5c69;
 }
+div.jumbotron{
+  margin-bottom: 0px;
+}
 /* END JUMBOTRON */
 
 /* SLIDE */
