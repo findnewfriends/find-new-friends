@@ -13,4 +13,5 @@
 
  *= require theme.min
  *= require static_pages
+ *= require footer
  */
