@@ -2,6 +2,7 @@
 	<section id="footer">
 		<div class="container mt-5">
 			<div class="row text-center justify-content-center text-sm-left text-md-left">
+		<% unless user_signed_in? %>
       	<div class="col-sm-12 col-sm-4 col-md-3">
 					<h5>My account</h5>
 					<ul class="list-unstyled quick-links">
@@ -10,6 +11,7 @@
 						<li><a href="#"><i class="fa fa-angle-double-right"></i>Help</a></li>
 					</ul>
 				</div>
+		<% else %>
         
 	      <div class="col-sm-12 col-sm-4 col-md-3">
 					<h5>Menu</h5>
@@ -20,6 +22,7 @@
 						<li><a href="#"><i class="fa fa-angle-double-right"></i>Activities</a></li>
 					</ul>
 				</div>
+		<% end %>
 
 				<div class="col-sm-12 col-sm-4 col-md-3">
 					<h5>The team</h5>
