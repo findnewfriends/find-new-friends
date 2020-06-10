@@ -38,7 +38,7 @@ end
   u = User.new
   u.email = "findnewfriends_#{index}@yopmail.com"
   u.email = "findnewfriends_admin@yopmail.com" if index == 0
-  u.encrypted_password = '123123' #Faker::Internet.password
+  u.password = '123123' #Faker::Internet.password
   u.first_name = Faker::Name.first_name
   u.last_name = Faker::Name.last_name
   u.birthdate = Faker::Time.between_dates(to: 18.year.from_now, from:  100.year.from_now, period: :day)
