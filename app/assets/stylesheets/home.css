@@ -1,5 +1,14 @@
-body {font-family: Verdana, sans-serif; margin:0}
+/* JUMBOTRON */
+.fa-globe-asia{
+  font-size:22px;
+}
 
+#titlePresentation{
+  color: #5a5c69;
+}
+/* END JUMBOTRON */
+
+/* SLIDE */
 .mySlides {display: none}
 
 img {vertical-align: middle;}
