@@ -10,6 +10,7 @@ class CreateUsers < ActiveRecord::Migration[5.2]
       t.string :gender
       t.references :job, foreign_key: true
       t.references :city, foreign_key: true
+      t.string :role, null: false, default: "user"
       t.timestamps
     end
   end
