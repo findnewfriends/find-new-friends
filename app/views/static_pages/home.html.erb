@@ -4,7 +4,7 @@
   <h3 class="" id="titlePresentation">Find new friends that share the same interest as you close by or anywhere around the globe <i class="fas fa-globe-asia"></i></h3>
   <p class="lead"></p>
   <p class="lead mt-5">
-    <a class="btn btn-info btn-lg text-uppercase" href="#" role="button">Register now</a>
+    <%= link_to "Register now", new_user_registration_path, class:"btn btn-info btn-lg text-uppercase" %>
   </p>
   </div>
 </div>
@@ -178,7 +178,7 @@
       </div>
       <div class="text-center">
         <h4 class="text-uppercase mt-5">Join us today</h4>
-        <button class="h6 btn btn-sm btn-warning text-uppercase mt-2">Register now</button>
+          <%= link_to "Register now", new_user_registration_path, class:"h6 btn btn-sm btn-warning text-uppercase mt-2" %>
       </div>
   </div>
 </div>
