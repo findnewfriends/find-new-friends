@@ -12,10 +12,10 @@
   <div class="collapse navbar-collapse" id="navbarNavDropdown">
     <ul class="navbar-nav w-100">
       <li class="nav-item">
-        <a class="nav-link" href="<%= matches_path%>">Find a Match</a>
+        <a class="nav-link" href="<%= matches_path %>">Find a Match</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">My Profile</a>
+        <a class="nav-link" href="<%= users_path%>">My Profile</a>
       </li>
       <li class="nav-item">
         <%= link_to "Sign out", destroy_user_session_path, :method => :delete, class:"btn btn-outline-danger ml-1" %>
