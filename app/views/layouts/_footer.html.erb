@@ -2,14 +2,16 @@
 	<section id="footer">
 		<div class="container">
 			<div class="row text-center justify-content-center text-sm-left text-md-left">
+		<% unless user_signed_in? %>
       	<div class="col-sm-12 col-sm-4 col-md-3">
 					<h5>My account</h5>
 					<ul class="list-unstyled quick-links">
-						<li><a href="#"><i class="fa fa-angle-double-right"></i>Sign up</a></li>
-						<li><a href="#"><i class="fa fa-angle-double-right"></i>Sign in</a></li>
-						<li><a href="#"><i class="fa fa-angle-double-right"></i>Help</a></li>
+						<li><a href="<%= new_user_registration_path%>"><i class="fa fa-angle-double-right"></i>Sign up</a></li>
+						<li><a href="<%= new_user_session_path%>"><i class="fa fa-angle-double-right"></i>Sign in</a></li>
+						<li><a href="<%= new_user_session_path%>"><i class="fa fa-angle-double-right"></i>Contact</a></li>
 					</ul>
 				</div>
+		<% else %>
         
 	      <div class="col-sm-12 col-sm-4 col-md-3">
 					<h5>Menu</h5>
@@ -20,6 +22,7 @@
 						<li><a href="#"><i class="fa fa-angle-double-right"></i>Activities</a></li>
 					</ul>
 				</div>
+		<% end %>
 
 				<div class="col-sm-12 col-sm-4 col-md-3">
 					<h5>The team</h5>
