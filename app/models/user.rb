@@ -1,6 +1,10 @@
 class User < ApplicationRecord
-  belongs_to :city
-    belongs_to :job
+  # Include default devise modules. Others available are:
+  # :confirmable, :lockable, :timeoutable and :omniauthable
+  devise :database_authenticatable, :registerable,
+         :recoverable, :rememberable, :validatable, :trackable
+  belongs_to :city, optional: true
+    belongs_to :job , optional: true
 
     has_many :feedbacks
     has_many :flags
