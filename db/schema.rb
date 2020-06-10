@@ -67,8 +67,8 @@ ActiveRecord::Schema.define(version: 2020_06_10_000503) do
   create_table "matches", force: :cascade do |t|
     t.bigint "user_id"
     t.bigint "matched_user_id"
-    t.integer "score"
-    t.integer "accepted"
+    t.float "score"
+    t.integer "status", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["matched_user_id"], name: "index_matches_on_matched_user_id"
