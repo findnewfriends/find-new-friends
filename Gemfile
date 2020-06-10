@@ -3,6 +3,19 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.5.1'
 
+gem 'bootstrap-sass', '~> 3.4.1'
+gem 'sassc-rails', '>= 2.1.0'
+gem 'table_print'
+gem 'faker'
+gem 'simple_form'
+gem 'dotenv-rails'
+gem 'devise'
+gem 'stripe'
+gem 'rspec'
+gem 'cancancan'
+
+# Test SSH3 < (antu)
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.4', '>= 5.2.4.3'
 # Use postgresql as the database for Active Record
@@ -59,6 +72,4 @@ group :test do
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
-
-gem 'table_print'
+# gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
