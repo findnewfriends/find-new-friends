@@ -1,4 +1,5 @@
 <!-- Image and text -->
+<% if user_signed_in? %>
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <a class="navbar-brand" href="<%= root_path%>">
@@ -16,15 +17,24 @@
       <li class="nav-item">
         <a class="nav-link" href="#">My Profile</a>
       </li>
-      <li class="nav-item ml-auto">
-        <a class="nav-link" href="#">Sign in</a>
-      </li>
       <li class="nav-item">
-        <button class="btn btn-outline-info" href="#">Sign up</button>
-      </li>
-      <li class="nav-item">
-        <button class="btn btn-outline-danger ml-1" href="#">Sign out</button>
+        <%= link_to "Sign out", destroy_user_session_path, :method => :delete, class:"btn btn-outline-danger ml-1" %>
       </li>
     </ul>
   </div>
 </nav>
+
+<% else %>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <ul class="navbar-nav w-100">
+    <li class="nav-item ml-auto">
+      <%= link_to "Sign in", new_user_session_path, class:"nav-link" %>
+    </li>
+    <li class="nav-item">
+      <%= link_to "Sign up", new_user_registration_path, class:"btn btn-outline-info " %>
+    </li>
+  </ul>
+</nav>
+
+<% end %>
