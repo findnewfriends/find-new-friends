@@ -1,13 +1,11 @@
 class CreateFeedbacks < ActiveRecord::Migration[5.2]
   def change
     create_table :feedbacks do |t|
-      t.references :user, foreign_key: true
-      t.integer :score
+      t.belongs_to :author, index: true
+      t.belongs_to :recipient, index: true
       t.text :content
       t.boolean :recommended
-
       t.timestamps
     end
-    add_reference :feedbacks, :author, references: :user
   end
 end
