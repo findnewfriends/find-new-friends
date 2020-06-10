@@ -27,6 +27,10 @@
 <% else %>
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
+<a class="navbar-brand" href="<%= root_path%>">
+    <img src="http://tinygraphs.com/spaceinvaders/FindNewFriends?theme=duskfalling&numcolors=4&size=220&fmt=svg" width="30" height="30" class="d-inline-block align-top" alt="">
+    Find New Friends
+  </a>
   <ul class="navbar-nav w-100">
     <li class="nav-item ml-auto">
       <%= link_to "Sign in", new_user_session_path, class:"nav-link" %>
