@@ -14,14 +14,15 @@
               <%= render "devise/shared/error_messages", resource: resource %>
               <div class="form-group row">
                 <div class="col-sm-6 mb-3 mb-sm-0">
-                  <input type="text" class="form-control form-control-user" id="exampleFirstName" placeholder="First Name">
+                <%= f.text_field :first_name, autocomplete: "first_name", class:'form-control form-control-user', placeholder: 'First Name' %>
+
                 </div>
                 <div class="col-sm-6">
-                  <input type="text" class="form-control form-control-user" id="exampleLastName" placeholder="Last Name">
+                  <%= f.text_field :last_name, autocomplete: "last_name", class:'form-control form-control-user', placeholder: 'Last Name' %>
                 </div>
               </div>
               <div class="form-group">
-                <input type="email" class="form-control form-control-user" id="exampleInputEmail" placeholder="Email Address">
+                <%= f.email_field :email, autocomplete: "email", class:'form-control form-control-user', placeholder: 'Email' %>
               </div>
               <div class="form-group row">
                 <div class="col-sm-6 mb-3 mb-sm-0">
