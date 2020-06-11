@@ -11,12 +11,23 @@ body{
 }
 
 /* JUMBOTRON */
+
+#jumbotronPresentation{
+  /* background: #f8f9fc !important; */
+  background: linear-gradient(to right, #ece9e6, #ffffff); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+#jumbotronValues{
+  background: linear-gradient(to right, #ece9e6, #ffffff); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
 .fa-globe-asia{
   font-size:22px;
 }
 
 #titlePresentation{
   color: #212529;
+  /* color:white; */
 }
 div.jumbotron{
   margin-bottom: 0px;

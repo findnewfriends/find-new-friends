@@ -47,7 +47,7 @@
       </div>
     </div>
     <div class="col-md-2">
-      <button type="button" class="btn btn-primary btn-block">Search</button>
+      <button type="button" class="btn btn-info btn-block">Search</button>
     </div>
   </div>
 </div>
@@ -55,12 +55,12 @@
 <!-- ENNND FILTER OPTIONS -->
 
 <!-- Card Profile -->
-<div class="cardProfile ">
-  <div class="container-fluid mt-5">
-   <div class="row ">
+<div class="cardProfile">
+  <div class="container-fluid mt-5 ml-2 mr-2 mb-5 justify-content-center">
+   <div class="row justify-content-center">
      <!-- First card Profile -->
    
-      <div class="card col-xl-4 col-sm-12 col-md-6 col-lg-5 shadow backgroundColorTopOfcard">
+      <div class="card m-2 col-xl-5 col-sm-12 col-md-8 col-lg-5 shadow backgroundColorCard">
         <%= image_tag("avatar.jpg", id:'imgProfile', class:'mt-4') %> 
         <div class="card-body">
           <h6 class="m-0 text-white text-center text-uppercase">Username</h6>
@@ -74,58 +74,14 @@
           </p>
           <hr>
           <div class="text-center">
-            <i class="far fa-heart fa-2x text-gray-300 mt-3"></i><br/>
+            <%= link_to "Send match request", root_path, class:"btn btn-outline btn-sm text-uppercase mt-4" %><br/>
             <%= link_to "See profile", root_path, class:"btn btn-outline btn-sm text-uppercase mt-4" %>
           </div>
         </div>
-    </div>
-      <!-- End first card profile-->
-   <!-- First card Profile -->
-   
-      <div class="card col-xl-4 col-sm-12 col-md-6 col-lg-5 shadow backgroundColorTopOfcard">
-        <%= image_tag("avatar.jpg", id:'imgProfile', class:'mt-4') %> 
-        <div class="card-body">
-          <h6 class="m-0 text-white text-center text-uppercase">Username</h6>
-          <h6 class="m-0 mt-2 text-white text-center"><i class="fas fa-map-marker-alt text-gray-300" id="iconLocation"></i> Location</h6>
-          <hr>
-          <div class="text-center">
-            <h6 class="m-0 mb-2 text-white text-uppercase">Bio</h6>
-          </div>
-          <p class="text-white text-center">
-            The styling for this basic card example is created by using default Bootstrap utility classes. By using utility classes, the style of the card component can be easily modified with no need for any custom CSS!
-          </p>
-          <hr>
-          <div class="text-center">
-            <i class="far fa-heart fa-2x text-gray-300 mt-3"></i><br/>
-            <%= link_to "See profile", root_path, class:"btn btn-outline btn-sm text-uppercase mt-4" %>
-          </div>
-        </div>
-    </div>
-      <!-- End first card profile-->
-        
-   <!-- First card Profile -->
-   
-      <div class="card col-xl-4 col-sm-12 col-md-6 col-lg-5 shadow backgroundColorTopOfcard">
-        <%= image_tag("avatar.jpg", id:'imgProfile', class:'mt-4') %> 
-        <div class="card-body">
-          <h6 class="m-0 text-white text-center text-uppercase">Username</h6>
-          <h6 class="m-0 mt-2 text-white text-center"><i class="fas fa-map-marker-alt text-gray-300" id="iconLocation"></i> Location</h6>
-          <hr>
-          <div class="text-center">
-            <h6 class="m-0 mb-2 text-white text-uppercase">Bio</h6>
-          </div>
-          <p class="text-white text-center">
-            The styling for this basic card example is created by using default Bootstrap utility classes. By using utility classes, the style of the card component can be easily modified with no need for any custom CSS!
-          </p>
-          <hr>
-          <div class="text-center">
-            <i class="far fa-heart fa-2x text-gray-300 mt-3"></i><br/>
-            <%= link_to "See profile", root_path, class:"btn btn-outline btn-sm text-uppercase mt-4" %>
-          </div>
-          </div>
-        </div>
-    </div>
-      <!-- End first card profile-->
+      </div>
+    <!-- End first card profile-->
+
+    
 
     </div>
   </div>

@@ -17,9 +17,9 @@ hr{
 .fa-heart{
 }
 
-.backgroundColorTopOfcard{
-  background: linear-gradient(to right, #be93c5, #7bc6cc); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-  
+.backgroundColorCard{
+  background: linear-gradient(to right, #be93c5, #7bc6cc);
+
 }
 
 .btn-outline{

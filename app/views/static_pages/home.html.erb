@@ -1,7 +1,7 @@
 <!-- JUMBOTRON PRESENTATION -->
 <% if user_signed_in? %>
 
-<div class="jumbotron text-center">
+<div class="jumbotron text-center" id="jumbotronPresentation">
 <div class="container col-lg-8">
   <h3 class="" id="titlePresentation">Find new friends that share the same interest as you close by or anywhere around the globe <i class="fas fa-globe-asia"></i></h3>
   <p class="lead"></p>
@@ -172,7 +172,7 @@
 <!-- ENNND CARDS ACTIVITIES -->
 
 <!-- JUMBOTRON VALUES-->
-<div class="jumbotron mt-5">
+<div class="jumbotron mt-5" id="jumbotronValues">
   <div class="container">
     <div class="row mt-3">
         <div class="col-lg-4 text-center">
@@ -193,9 +193,7 @@
         </div>
       </div>
 
-<% if user_signed_in? %>
-
-<% else %>
+<% unless user_signed_in? %>
       <div class="text-center">
         <h4 class="text-uppercase mt-5">Join us today</h4>
           <%= link_to "Register now", new_user_registration_path, class:"h6 btn btn-sm btn-warning text-uppercase mt-2" %>

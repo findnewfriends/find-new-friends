@@ -4,8 +4,9 @@ section {
 }
 
 #footer {
-  background: #ffffff !important;
+  background: #f8f9fc !important;
 }
+
 #footer h5{
 	padding-left: 10px;
   border-left: 3px solid #36b9cc;
