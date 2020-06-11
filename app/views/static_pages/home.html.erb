@@ -1,13 +1,29 @@
 <!-- JUMBOTRON PRESENTATION -->
+<% if user_signed_in? %>
+
 <div class="jumbotron text-center">
 <div class="container col-lg-8">
   <h3 class="" id="titlePresentation">Find new friends that share the same interest as you close by or anywhere around the globe <i class="fas fa-globe-asia"></i></h3>
   <p class="lead"></p>
   <p class="lead mt-5">
-    <%= link_to "Register now", new_user_registration_path, class:"btn btn-info btn-lg text-uppercase" %>
+    <%= link_to "Find your new mate", matches_path, class:"btn btn-info btn-md text-uppercase" %>
   </p>
   </div>
 </div>
+
+<% else %>
+
+<div class="jumbotron text-center">
+  <div class="container col-lg-8">
+    <h3 class="" id="titlePresentation">Find new friends that share the same interest as you close by or anywhere around the globe <i class="fas fa-globe-asia"></i></h3>
+    <p class="lead"></p>
+    <p class="lead mt-5">
+      <%= link_to "Register now", new_user_registration_path, class:"btn btn-info btn-lg text-uppercase" %>
+    </p>
+  </div>
+</div>
+
+<% end %>
 <!-- JUMBOTRON FIN -->
 
 <!-- SLIDE  DEBUT -->
@@ -118,7 +134,7 @@
         <div class="card-body">
           <div class="row no-gutters align-items-center">
             <div class="col mr-2">
-              <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Guitar</div>
+              <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Music</div>
               <div class="row no-gutters align-items-center">
                 <div class="col-auto">
                   <div class="h6 mb-0 mr-3 font-weight-bold text-gray-800">130 active users</div>
@@ -176,10 +192,16 @@
             </p>
         </div>
       </div>
+
+<% if user_signed_in? %>
+
+<% else %>
       <div class="text-center">
         <h4 class="text-uppercase mt-5">Join us today</h4>
           <%= link_to "Register now", new_user_registration_path, class:"h6 btn btn-sm btn-warning text-uppercase mt-2" %>
       </div>
+<% end %>
+
   </div>
 </div>
 <!--  END CONTAINER -->

@@ -1,10 +1,10 @@
 /* Footer */
 section {
-    padding: 60px 0;
+  padding: 60px 0;
 }
 
 #footer {
-    background: #ffffff !important;
+  background: #ffffff !important;
 }
 #footer h5{
 	padding-left: 10px;
@@ -14,16 +14,16 @@ section {
   color:#6d6d75;
 }
 #footer a {
-    color: #6d6d75;
-    text-decoration: none !important;
-    background-color: transparent;
-    -webkit-text-decoration-skip: objects;
+  color: #6d6d75;
+  text-decoration: none !important;
+  background-color: transparent;
+  -webkit-text-decoration-skip: objects;
 }
 #footer ul.social li{
 	padding: 3px 0;
 }
 #footer ul.social li a i {
-    margin-right: 5px;
+  margin-right: 5px;
 	font-size:25px;
 	-webkit-transition: .5s all ease;
 	-moz-transition: .5s all ease;
@@ -55,8 +55,8 @@ section {
 	margin-right: 5px;
 }
 #footer ul.quick-links li:hover a i {
-    font-weight: 600;
-    color:#36b9cc;
+  font-weight: 600;
+  color:#36b9cc;
 }
 
 #heart{

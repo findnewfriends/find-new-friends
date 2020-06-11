@@ -1,5 +1,13 @@
+html {
+  height: 100%;
+}
+
 body{
   color: #212529;
+  min-height: 100%;
+  margin: 0;
+  padding: 0;
+  position: relative;
 }
 
 /* JUMBOTRON */

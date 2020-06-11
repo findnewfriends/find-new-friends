@@ -1,0 +1,41 @@
+p{
+  font-size:13px;
+}
+
+hr{
+  background-color:white;
+}
+
+.cardProfile{
+  width: 900px;
+}
+
+#imgProfile{
+  border-radius: 50%;
+  width: 170px;
+  height: 170px;
+  margin:auto;
+  margin-top: 10px;
+}
+
+.fa-heart{
+}
+
+.backgroundColorTopOfcard{
+  background: linear-gradient(to right, #be93c5, #7bc6cc); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  
+}
+
+.btn-outline{
+  background-color: white;
+}
+
+.btn-outline:hover {
+  background-color: #858796; /* Green */
+  color: white;
+}
+
+#iconLocation{
+  font-size:13px;
+}
+
