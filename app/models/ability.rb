@@ -5,14 +5,23 @@ class Ability
 
   def initialize(user)
 
-    user ||= User.new
+
+    alias_action :create, :read, :update, :destroy, to: :crud
+    alias_action :read, :destroy, to: :rd
+
+    if user.present? 
+      can :rd, match, user_id: user.id
+    end
 
     if user.admin?
       can :manage, :all
-    else
-      can :read, :all
     end
-      
+
+      #if user && user.:id
+        
+        #can :read, Matches
+          
+      #end
 
 
 
