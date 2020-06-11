@@ -14,11 +14,6 @@ gem 'stripe'
 gem 'rspec'
 gem 'cancancan'
 
-# gem 'BetterErros'
-group :development do
-  gem "better_errors"
-  gem "binding_of_caller"
-end
 
 # Test SSH3 < (antu)
 

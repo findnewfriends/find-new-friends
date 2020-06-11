@@ -10,12 +10,12 @@ class Ability
     alias_action :read, :destroy, to: :rd
 
     if user.present? 
-      can :rd, match, user_id: user.id
-    end
-
-    if user.admin?
       can :manage, :all
     end
+
+    #if user.admin?
+      #can :manage, :all
+    #end
 
       #if user && user.:id
         
