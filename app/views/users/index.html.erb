@@ -1,0 +1,40 @@
+<section class="banner row container-fluid">
+    <div class="box_avatar col-xl-2 col-sm-12 col-md-4 col-lg-2">
+        <%= image_tag('avatar', class: "avatar")%>
+    </div>
+    <div class="bio col-xl-5 col-sm-12 col-md-4 col-lg-5">
+        <h1>John Smith</h1>
+        <p>28 years old</p>
+        <p>
+            <i class="fas fa-map-marker-alt"></i>
+            New york
+        </p>
+        <p>
+            <% 3.times do %>
+                <i class="fas fa-star"></i>
+            <% end %>
+            <i class="fas fa-star-half-alt"></i>
+            <i class="far fa-star"></i>
+        </p>
+    </div>
+    <div class="description col-xl-5 col-sm-12 col-md-4 col-lg-5">
+        <h2>Who i am ?</h2>
+        <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            Phasellus porta accumsan eleifend. Nullam non consequat risus.
+            Cras rhoncus, est ac egestas sodales, ipsum libero pulvinar est, id dapibus lacus ligula sit amet sem.
+            Donec mauris orci, luctus at mauris a, mollis iaculis libero.
+            Proin auctor, lectus et rutrum tempus, eros lacus posuere nunc, eu semper arcu magna non velit.
+            Proin ornare urna placerat volutpat varius. Fusce luctus dui id odio tempus, posuere porttitor nisl efficitur.
+            Ut a risus lacus. Etiam elementum dapibus sem eu dignissim. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            Interdum et malesuada fames ac ante ipsum primis in faucibus.
+        </p>
+    </div>
+</section>
+<section class="container-fluid">
+    <h1>New match requests</h1>
+    <div class="request row">
+        <%= image_tag('avatar_2', class: "avatar") %>
+    </div>
+</section>
+

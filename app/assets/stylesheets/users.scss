@@ -1,3 +1,47 @@
 // Place all the styles related to the Users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+
+// Banner 
+section.banner{
+    border-bottom: 1px solid gray;
+    div.box_avatar{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    div.bio{
+        padding-left: 2rem;
+    }
+}
+//        position: absolute;
+//bottom: -30%;
+// left: 1%;
+// position: relative;
+
+// Send match request
+div.request{
+
+}
+
+
+// Utilitaries
+.avatar{
+    width: 200px;
+    height: auto;
+    border-radius: 50%;
+    border: 3px solid gray;
+}
+
+// Responsive
+@media screen and (min-width: 2000px){
+    section.banner{
+        div.box_avatar{
+            img{
+                margin-left: 10rem;
+            }
+        }
+    }
+}
