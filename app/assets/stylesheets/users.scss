@@ -6,10 +6,12 @@
 // Banner 
 section.banner{
     border-bottom: 1px solid gray;
+    h1.title{
+        padding: 0.5em;
+    }
     div.box_avatar{
         display: flex;
         flex-direction: column;
-        justify-content: center;
         align-items: center;
     }
     div.bio{
@@ -23,9 +25,39 @@ section.banner{
 
 // Send match request
 div.request{
+    border-bottom: 1px solid gray;
+    padding-bottom: 1em ;
+    margin-top: 1em;
+    div.box_bio{
+        div.bio{
+            margin-left: 2em;
+        }
+    }
+    div.buttons{
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+    }
 
 }
 
+// Historic and interests
+section#historic_and_interest{
+    padding-top: 0px;
+    div.interest{
+        h2{
+            margin-top: 1em;
+        }
+        div.button{
+            margin-top: 3em;
+        }
+    }
+    div.historic{
+        td p{
+            margin-bottom: 0;
+        }
+    }
+}
 
 // Utilitaries
 .avatar{
@@ -43,5 +75,15 @@ div.request{
                 margin-left: 10rem;
             }
         }
+    }
+}
+@media screen and (max-width: 767px){
+    div.bio{
+        text-align: center;
+    }
+}
+@media screen and (max-width: 991px){
+    div.description{
+        margin-top: 2em;
     }
 }

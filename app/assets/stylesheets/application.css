@@ -16,3 +16,6 @@
  *= require footer
  *= require users
  */
+section#footer{
+     border-top: 1px solid gray;
+ }
