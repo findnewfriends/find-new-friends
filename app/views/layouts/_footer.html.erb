@@ -17,7 +17,7 @@
 					<h5>Menu</h5>
 					<ul class="list-unstyled quick-links">
 						<li><a href="<%= root_path%>"><i class="fa fa-angle-double-right"></i>Home</a></li>
-						<li><a href="#"><i class="fa fa-angle-double-right"></i>My profile</a></li>
+						<li><a href="<%= user_path(current_user.id) %>"><i class="fa fa-angle-double-right"></i>My profile</a></li>
 						<li><a href="<%= matches_path%>"><i class="fa fa-angle-double-right"></i>Matching page</a></li>
 						<li><a href="#"><i class="fa fa-angle-double-right"></i>Activities</a></li>
 					</ul>

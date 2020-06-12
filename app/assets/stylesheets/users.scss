@@ -2,12 +2,23 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
+p{
+    color:#858796;
+}
+
+h3, h2{
+    color:#4e4e53;
+}
 
 // Banner 
 section.banner{
     border-bottom: 1px solid gray;
+    // background-color: #f4f4f8;
     h1.title{
-        padding: 0.5em;
+        background: linear-gradient(to right, #b993d6, #8ca6db); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+        border-radius: 7px;
+        padding:10px;
+        color:white;
     }
     div.box_avatar{
         display: flex;
@@ -57,6 +68,9 @@ section#historic_and_interest{
             margin-bottom: 0;
         }
     }
+    div.progress-bar{
+        background: linear-gradient(90deg, rgba(228,91,91,1) 0%, rgba(129,129,252,1) 0%, rgba(54,185,204,1) 100%);
+    }
 }
 
 // Utilitaries
@@ -64,6 +78,7 @@ section#historic_and_interest{
     width: 200px;
     height: auto;
     border-radius: 50%;
+    padding:1px;
     border: 3px solid gray;
 }
 

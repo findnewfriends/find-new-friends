@@ -1,0 +1,111 @@
+
+<section class="banner container">
+    <h1 class='text-center title mb-5'>
+        <i class="fas fa-user-circle"></i>
+        Profile Page
+    </h1>
+    <div class='row'>   
+        <div class="box_avatar col-xl-2 col-sm-12 col-md-6 col-lg-2">
+            <%= image_tag('profile_avatar', class: "avatar")%>
+        </div>
+        <div class="bio col-xl-5 col-sm-12 col-md-6 col-lg-5">
+            <h3><%= current_user.first_name %></h3>
+            <p><%= current_user.birthdate %></p>
+            <p>
+                <i class="fas fa-map-marker-alt"></i>
+                <%= current_user.city.name %>
+            </p>
+            <p>
+                <% 3.times do %>
+                    <i class="fas fa-star"></i>
+                <% end %>
+                <i class="fas fa-star-half-alt"></i>
+                <i class="far fa-star"></i>
+            </p>
+        </div>
+        <div class="description col-xl-5 col-sm-12 col-md-12 col-lg-5">
+            <h3>Who I am ?</h3>
+            <p>
+                <%= current_user.description %>
+            </p>
+        </div>
+    </div>
+
+</section>
+<section class="container match">
+    <h2 class="mb-5 text-center">New match requests</h2>
+    <% current_user.matches.each do |match| %>
+    <% if match.status == 2 %>
+        <div class="request row">
+            <%= image_tag('avatar_2', class: "avatar") %>
+            <div class='box_bio col-xl-5 col-sm-12 col-md-4 col-lg-5'>
+                <div class='bio'>
+                    <h3><%= match.matched_user.first_name %></h3>
+                    <p>Would you like to talk about Football ?</p>
+                    <a href="<%= match_path(match.matched_user.id) %>" class='btn btn-sm btn-primary p-2 mb-3'>See profile</a>
+                </div>
+            </div>
+            <div class='buttons col-xl-4 col-sm-12 col-md-4 col-lg-5'>
+                <a href="#" class='btn btn-sm btn-success mr-2 p-2'>Accept Match Request</a>
+                <a href="#" class='btn btn-sm btn-danger p-2'>Refuse Match Request</a>
+            </div>
+        </div>
+        <% else %>
+        <p class="text-center">No match request yet</p>
+      <% end %>
+    <% end %>
+</section>
+
+<section class='container' id='historic_and_interest'>
+    <div class='row'>
+        <div class='col-lg-5 col-xl-5 col-sm-12 col-md-12 interest'>
+            <h2 class='text-center mb-5'>My interests</h2>
+            <% current_user.interests.each do |interest|%>
+            <h3><%= interest.name %></h3>
+            <div class="progress mb-5">
+                <div class="progress-bar" role="progressbar" style="width: 100%;" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
+            <% end %>
+
+            <div class='button text-center'>
+                <a href="#" class='btn btn-md p-2 btn-info mb-4'>Add Interest</a>
+            </div>
+        </div>
+        <div class='col-lg-6 col-xl-6  col-sm-12 col-md-12 ml-lg-5 ml-xl-5 historic'>
+            <h2 class='text-center mb-5 mt-4'>Match history</h2>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Profile</th>
+                            <th scope="col">Date Match</th>
+                            <th scope="col">Contact</th>
+                            <th scope="col">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    <% current_user.matches.each do |match| %>
+                    <% if match.status == 0%>
+                        <tr>
+                            <th scope="row"><%= match.matched_user.first_name %></th>
+                            <td><%= match.matched_user.birthdate %></td>
+                            <td>
+                                <a href="facebook.com">Facebook</a>
+                                <p>Discord :</p>
+                                <p>Instagram: </p>
+                            </td>
+                            <td>
+                                <a href="<%= match_path(match.matched_user.id) %>" class='btn btn-sm p-2 btn-primary mb-2'>See profile</a>
+                                <a href="#" class='btn btn-sm p-2 btn-success'>Do a quizz with me !</a>
+                            </td>
+                        </tr>
+                        <% else %>
+                        <p>No match history yet</p>
+                        <% end %>
+                        <% end %>
+                    </tbody>    
+                </table>
+        </div>
+    </div>
+    
+</section> 
+
