@@ -8,7 +8,7 @@
         <div class="col-lg-7">
           <div class="p-5">
             <div class="text-center">
-              <h1 class="h4 text-gray-900 mb-4">Create an Account!</h1>
+              <h1 class="h4 text-gray-900 mb-4">Create an Account!<%= @user.first_name%></h1>
             </div>
             <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
               <%= render "devise/shared/error_messages", resource: resource %>
@@ -37,7 +37,15 @@
                   <% end %><br />
                 </div>
               </div>
-              
+              <h2>Choose a interest (One minimum)</h2>
+                <div class='row'>
+                  <%= collection_check_boxes(:interests, :ids,Interest.all, :id, :name) do |b| %>
+                  <div class='col-sm-12 col-md-12 col-lg-6 col-xl-6'>
+                      <%= b.label(class: "my-coucou") { b.check_box(checked: false) + ' ' + b.text} %>
+                  </div>
+                  <% end %>
+                </div>
+
               <%= f.submit "Sign up", class:"btn btn-primary btn-user btn-block" %>
             <% end %>
               <hr>
