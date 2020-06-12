@@ -13,7 +13,11 @@
             <p><%= current_user.birthdate %></p>
             <p>
                 <i class="fas fa-map-marker-alt"></i>
-                <%= current_user.city.name %>
+                <% if current_user.city %>
+                    <%= current_user.city.name %>
+                <% else %>
+                    No city yet
+                <% end %>
             </p>
             <p>
                 <% 3.times do %>
