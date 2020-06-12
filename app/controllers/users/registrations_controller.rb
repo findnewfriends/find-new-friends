@@ -15,13 +15,19 @@ class Users::RegistrationsController < Devise::RegistrationsController
     @interests = Interest.all
     interests = params[:interests][:ids]
     interests.delete_at(0)
-    puts '*' * 100
-    puts interests.inspect
-    puts '*' * 100
-    super
-    interests.each do |interest|
-      JoinUserInterest.create(user: current_user, interest: Interest.find(interest.to_i))
+    if interests.length == 0
+      flash[:danger_3] = 'You need to put 1 interest minimum'
     end
+    
+    if flash[:danger_1] || flash[:danger_2] || flash[:danger_3]
+      redirect_to new_user_registration_path
+    else
+      super
+      interests.each do |interest|
+        JoinUserInterest.create(user: current_user, interest: Interest.find(interest.to_i))
+      end
+    end
+
    end
 
    #GET /resource/edit
