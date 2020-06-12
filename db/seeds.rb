@@ -33,7 +33,8 @@ end
 
 
 #User
-33.times do |index|
+number_of_users = 30
+number_of_users.times do |index|
   u = User.new
   u.email = "findnewfriends_#{index}@yopmail.com"
   u.email = "findnewfriends_admin@yopmail.com" if index == 0
@@ -50,7 +51,7 @@ end
 end
 
 #Feedback
-60.times do |index|
+(number_of_users*2).times do |index|
   u = Feedback.new
   u.author = User.all.sample
   u.recipient = User.all.sample
@@ -61,7 +62,7 @@ end
 end
 
 #Flag
-7.times do |index|
+(number_of_users/10).times do |index|
   u = Flag.new
   u.author = User.all.sample
   u.recipient = User.all.sample
@@ -79,7 +80,7 @@ end
 
 #JoinUserInterest
 User.all.each_with_index do |user,index|
-  5.times do
+  9.times do
     u = JoinUserInterest.new
     u.user = user
     u.interest = Interest.all.sample
