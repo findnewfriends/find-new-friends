@@ -2,7 +2,7 @@ class MatchesController < ApplicationController
   load_and_authorize_resource 
   
   def index
-    @matches = Match.all
+    @users = User.all
   end
 
   def show

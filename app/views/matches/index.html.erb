@@ -63,23 +63,35 @@
   <div class="container-fluid mt-5 ml-2 mr-2 mb-5 justify-content-center">
    <div class="row justify-content-center">
      <!-- First card Profile -->
-   <% @matches.each do |match|%>
+   <% @users.each do |user|%>
       <div class="card m-1 col-xl-3 col-sm-12 col-md-8 col-lg-5 shadow backgroundColorCard">
         <%= image_tag("avatar.jpg", class:'mt-4 img_profile') %> 
         <div class="card-body">
-          <h6 class="m-0 text-white text-center text-uppercase"> <%= match.matched_user.first_name %></h6>
-          <h6 class="m-0 mt-2 text-white text-center"><i class="fas fa-map-marker-alt text-gray-300" id="iconLocation"></i> <%= match.matched_user.city.name %></h6>
+          <h6 class="m-0 text-white text-center text-uppercase">
+          <% if user.first_name && user.last_name%>
+            <%= user.first_name  + ' ' + user.last_name%>
+          <% else %>
+          No name yet
+          <% end%>
+           </h6>
+          <h6 class="m-0 mt-2 text-white text-center"><i class="fas fa-map-marker-alt text-gray-300" id="iconLocation"></i>
+           <% if user.city%>
+            <%= user.city.name %>
+          <%else %>
+          No city yet
+          <% end%>
+           </h6>
           <hr>
           <div class="text-center">
             <h6 class="m-0 mb-2 text-white text-uppercase">Bio</h6>
           </div>
           <p class="text-white text-center">
-            <%= match.matched_user.description %>
+            <%= user.description %>
           </p>
           <hr>
           <div class="text-center">
             <%= link_to "Send match request", root_path, class:"btn btn-outline btn-sm text-uppercase mt-4" %><br/>
-            <%= link_to "See profile", match_path(match.matched_user.id), class:"btn btn-outline btn-sm text-uppercase mt-4" %>
+            <%= link_to "See profile", match_path(user.id), class:"btn btn-outline btn-sm text-uppercase mt-4" %>
           </div>
         </div>
       </div>
