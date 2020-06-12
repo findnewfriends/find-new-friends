@@ -7,7 +7,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    if @user.admin?
+    if @user && @user.admin?
       #@matches = Match.all
       #@users = User.all
     end
