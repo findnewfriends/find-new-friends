@@ -17,6 +17,11 @@
       <li class="nav-item">
         <a class="nav-link" href="<%= user_path(current_user.id) %>">My Profile</a>
       </li>
+      <% if current_user.admin? %>
+      <li class="nav-item">
+        <a class="nav-link text-danger" href="">Admin</a>
+      </li>
+      <% end %>
       <li class="nav-item ml-auto">
         <%= link_to "Sign out", destroy_user_session_path, :method => :delete, class:"btn btn-outline-danger ml-1" %>
       </li>
