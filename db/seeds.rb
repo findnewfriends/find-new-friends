@@ -21,7 +21,7 @@ User.destroy_all
 #City
 13.times do |index|
   u = City.new
-  u.name = Faker::Address.city
+  u.name = Faker2057::Address.city
   puts "City #{index} created" if u.save
 end
 

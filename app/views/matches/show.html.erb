@@ -1,0 +1,20 @@
+<section class='container-fluid row'>
+    <div class='box_avatar col-xl-2 col-sm-12 col-md-6 col-lg-2'>
+            <%= image_tag('avatar', class: "avatar") %>
+    </div>
+    <div class="bio col-xl-5 col-sm-12 col-md-6 col-lg-5">
+            <h2><%= @user.first_name + ' ' + @user.last_name%></h1>
+            <p><%= @user.birthdate %></p>
+            <p>
+                <i class="fas fa-map-marker-alt"></i>
+                <%= @user.city.name%>
+            </p>
+            <p>
+                <% 3.times do %>
+                    <i class="fas fa-star"></i>
+                <% end %>
+                <i class="fas fa-star-half-alt"></i>
+                <i class="far fa-star"></i>
+            </p>
+        </div>
+</section>
