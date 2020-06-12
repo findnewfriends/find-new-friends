@@ -1,6 +1,10 @@
 
 <!-- FILTER OPTIONS -->
-<div class="container-fluid bg-light ">
+<div class="container-fluid bg-light pt-4">
+<div class="text-center">
+  <h3 class="mb-3 text-info">Find your new mate today! </h3>
+  <p class="text-secondary">It's as easy as it looks ! Just select the field you are looking for and click search <i class="far fa-smile-beam"></i>.</p>
+</div>
 	<div class="row align-items-center justify-content-center">
       <div class="col-md-2 pt-3">
         <div class="form-group ">
@@ -37,7 +41,7 @@
     <div class="col-md-2 pt-3">
       <div class="form-group">
         <select id="inputState" class="form-control">
-          <option selected>Localisation</option>
+          <option selected>Location</option>
           <option>Paris</option>
           <option>Lyon</option>
           <option>Toulouse</option>
@@ -46,7 +50,7 @@
         </select>
       </div>
     </div>
-    <div class="col-md-2">
+    <div class="col-md-2 buttonSearch">
       <button type="button" class="btn btn-info btn-block">Search</button>
     </div>
   </div>
@@ -59,18 +63,18 @@
   <div class="container-fluid mt-5 ml-2 mr-2 mb-5 justify-content-center">
    <div class="row justify-content-center">
      <!-- First card Profile -->
-   
-      <div class="card m-2 col-xl-5 col-sm-12 col-md-8 col-lg-5 shadow backgroundColorCard">
+   <% @matches.each do |match|%>
+      <div class="card m-1 col-xl-3 col-sm-12 col-md-8 col-lg-5 shadow backgroundColorCard">
         <%= image_tag("avatar.jpg", id:'imgProfile', class:'mt-4') %> 
         <div class="card-body">
-          <h6 class="m-0 text-white text-center text-uppercase">Username</h6>
-          <h6 class="m-0 mt-2 text-white text-center"><i class="fas fa-map-marker-alt text-gray-300" id="iconLocation"></i> Location</h6>
+          <h6 class="m-0 text-white text-center text-uppercase"> <%= match.matched_user.first_name %></h6>
+          <h6 class="m-0 mt-2 text-white text-center"><i class="fas fa-map-marker-alt text-gray-300" id="iconLocation"></i> <%= match.matched_user.city.name %></h6>
           <hr>
           <div class="text-center">
             <h6 class="m-0 mb-2 text-white text-uppercase">Bio</h6>
           </div>
           <p class="text-white text-center">
-            The styling for this basic card example is created by using default Bootstrap utility classes. By using utility classes, the style of the card component can be easily modified with no need for any custom CSS!
+            <%= match.matched_user.description %>
           </p>
           <hr>
           <div class="text-center">
@@ -79,10 +83,9 @@
           </div>
         </div>
       </div>
+    <% end %>
+
     <!-- End first card profile-->
-
-    
-
     </div>
   </div>
 </div>

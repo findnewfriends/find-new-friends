@@ -9,7 +9,7 @@ section {
 
 #footer h5{
 	padding-left: 10px;
-  border-left: 3px solid #36b9cc;
+  border-left: 3px solid #BE93C5;
   padding-bottom: 6px;
   margin-bottom: 20px;
   color:#6d6d75;
@@ -57,11 +57,11 @@ section {
 }
 #footer ul.quick-links li:hover a i {
   font-weight: 600;
-  color:#36b9cc;
+  color:#BE93C5;
 }
 
 #heart{
-  color: #36b9cc;
+  color: #BE93C5;
 }
 
 @media (max-width:767px){

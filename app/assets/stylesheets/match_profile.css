@@ -1,5 +1,5 @@
 p{
-  font-size:13px;
+  font-size:15px;
 }
 
 hr{
@@ -7,18 +7,18 @@ hr{
 }
 
 #imgProfile{
+  padding: 1px;
   border-radius: 50%;
-  width: 170px;
-  height: 170px;
+  border: 2px solid white;
+  width: 180px;
+  height: 180px;
   margin:auto;
   margin-top: 10px;
 }
-
-.fa-heart{
-}
+/* commence */
 
 .backgroundColorCard{
-  background: linear-gradient(to right, #be93c5, #7bc6cc);
+  background: linear-gradient(to right, #be93c5, #7bc6cc); 
 
 }
 

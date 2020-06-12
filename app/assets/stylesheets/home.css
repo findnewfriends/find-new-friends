@@ -10,11 +10,28 @@ body{
   position: relative;
 }
 
+#jumbotronValues i{
+  color:#7BC6CC;
+}
+
+#jumbotronValues h3{
+  color:#7BC6CC;
+}
+
+#jumbotronValues p{
+  color: #858796;
+}
 /* JUMBOTRON */
 
 #jumbotronPresentation{
   /* background: #f8f9fc !important; */
-  background: linear-gradient(to right, #ece9e6, #ffffff); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background-image: linear-gradient(to bottom, rgba(1,0,0,0.1) 0%,rgba(0,0,0,0.1) 100%),
+  url("jumbotronP.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 450px;
+  /* background: linear-gradient(to right, #ece9e6, #ffffff); W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
 #jumbotronValues{
@@ -26,8 +43,8 @@ body{
 }
 
 #titlePresentation{
-  color: #212529;
-  /* color:white; */
+  /* color: #212529; */
+  color:white;
 }
 div.jumbotron{
   margin-bottom: 0px;
@@ -35,7 +52,9 @@ div.jumbotron{
 /* END JUMBOTRON */
 
 /* SLIDE */
-.mySlides {display: none}
+.mySlides {
+  display: none;
+}
 
 img {vertical-align: middle;}
 
