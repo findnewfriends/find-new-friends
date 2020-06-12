@@ -14,5 +14,10 @@
  *= require theme.min
  *= require home
  *= require footer
+ *= require users
  *= require match_profile
+ *= require show_match
  */
+section#footer{
+     border-top: 1px solid gray;
+ }

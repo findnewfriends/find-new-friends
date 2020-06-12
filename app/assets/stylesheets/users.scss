@@ -1,3 +1,89 @@
 // Place all the styles related to the Users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+
+// Banner 
+section.banner{
+    border-bottom: 1px solid gray;
+    h1.title{
+        padding: 0.5em;
+    }
+    div.box_avatar{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    div.bio{
+        padding-left: 2rem;
+    }
+}
+//        position: absolute;
+//bottom: -30%;
+// left: 1%;
+// position: relative;
+
+// Send match request
+div.request{
+    border-bottom: 1px solid gray;
+    padding-bottom: 1em ;
+    margin-top: 1em;
+    div.box_bio{
+        div.bio{
+            margin-left: 2em;
+        }
+    }
+    div.buttons{
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+    }
+
+}
+
+// Historic and interests
+section#historic_and_interest{
+    padding-top: 0px;
+    div.interest{
+        h2{
+            margin-top: 1em;
+        }
+        div.button{
+            margin-top: 3em;
+        }
+    }
+    div.historic{
+        td p{
+            margin-bottom: 0;
+        }
+    }
+}
+
+// Utilitaries
+.avatar{
+    width: 200px;
+    height: auto;
+    border-radius: 50%;
+    border: 3px solid gray;
+}
+
+// Responsive
+@media screen and (min-width: 2000px){
+    section.banner{
+        div.box_avatar{
+            img{
+                margin-left: 10rem;
+            }
+        }
+    }
+}
+@media screen and (max-width: 767px){
+    div.bio{
+        text-align: center;
+    }
+}
+@media screen and (max-width: 991px){
+    div.description{
+        margin-top: 2em;
+    }
+}

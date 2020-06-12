@@ -6,7 +6,7 @@ hr{
   background-color:white;
 }
 
-#imgProfile{
+.img_profile{
   padding: 1px;
   border-radius: 50%;
   border: 2px solid white;
