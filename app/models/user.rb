@@ -20,9 +20,23 @@ class User < ApplicationRecord
 
   after_create :welcome_send
   def welcome_send
-    puts "Welcome email is going to be requested next"
+    # puts "Welcome email is going to be requested next"
     UserMailer.welcome_email(self).deliver_now
   end
+
+
+  # after_create :create_matches_for_new_user
+  # def create_matches_for_user
+  #   User.all.each_with_index do |existing_user,index|
+  #     u = Match.new
+  #     u.user = self
+  #     u.matched_user = existing_user
+  #     u.score = MatchingScore.new.perform(self,existing_user)
+  #     u.save if self != existing_user
+  #   end
+  # end
+
+
 
   def admin?
     self.role == "admin"

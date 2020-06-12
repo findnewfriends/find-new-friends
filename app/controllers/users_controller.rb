@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
 
+
   def index
     @users = User.all
     #@matches = Match.find(params[id]) (find only the match between users)
@@ -30,6 +31,7 @@ class UsersController < ApplicationController
     end
   end
 
+
   def update
     puts "================================================"
     puts "current user is admin = #{@user.admin?}"
@@ -47,6 +49,7 @@ class UsersController < ApplicationController
     end
   end
 
+
   def destroy
     @user.destroy
     respond_to do |format|
@@ -56,6 +59,7 @@ class UsersController < ApplicationController
   end
 
   private
+
   # Use callbacks to share common setup or constraints between actions.
   def set_user
     @user = User.find(params[:id])
