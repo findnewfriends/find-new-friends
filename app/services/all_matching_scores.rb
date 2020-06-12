@@ -9,6 +9,7 @@ class AllMatchingScores
         u = Match.new
         u.user = user
         u.matched_user = all_users[index1+index2+1]
+        u.status = [0,0,0,0,0,0,0,1,2,3,4].sample
         u.score = MatchingScore.new.perform(user,all_users[index1+index2+1])
         u.save
       end
