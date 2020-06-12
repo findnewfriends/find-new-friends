@@ -13,16 +13,9 @@ class Ability
       can :manage, :all
     end
 
-    #if user.admin?
-      #can :manage, :all
-    #end
-
-      #if user && user.:id
-        
-        #can :read, Matches
-          
-      #end
-
+    if user.admin?
+      can :manage, :all
+    end
 
 
     # Define abilities for the passed in user here. For example:
