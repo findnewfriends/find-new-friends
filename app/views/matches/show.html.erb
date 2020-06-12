@@ -51,12 +51,10 @@
     <div class='row mt-3'>
         <div class='col-lg-5 col-xl-5 col-sm-12 col-md-12 interest'>
             <h3 class='card-title text-center mb-5'>My interests</h3>
-            <% current_user.interests.each do |interest|%>
-            <h4><%= interest.name %></h4>
+            <h4>Sport</h4>
             <div class="progress mb-5">
                 <div class="progress-bar progressBarMatchUser" role="progressbar" style="width: 100%;" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
             </div>
-            <% end %>
         </div>
         <div class='card-text col-lg-6 col-xl-6 col-sm-12 col-md-12 ml-lg-5 ml-xl-5'>
           <h2>Who I am ?</h2>
