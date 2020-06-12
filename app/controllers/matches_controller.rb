@@ -6,7 +6,7 @@ class MatchesController < ApplicationController
   end
 
   def create
-
+    puts "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx create method for matches called!!!"
   end
 
 end
