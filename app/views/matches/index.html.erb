@@ -1,2 +1,92 @@
-<h1>Match#index</h1>
-<p>Find me in app/views/match/index.html.erb</p>
+
+<!-- FILTER OPTIONS -->
+<div class="container-fluid bg-light pt-4">
+<div class="text-center">
+  <h3 class="mb-3 text-info">Find your new mate today! </h3>
+  <p class="text-secondary">It's as easy as it looks ! Just select the field you are looking for and click search <i class="far fa-smile-beam"></i>.</p>
+</div>
+	<div class="row align-items-center justify-content-center">
+      <div class="col-md-2 pt-3">
+        <div class="form-group ">
+          <select id="inputState " class="form-control">
+            <option selected>Age</option>
+            <option>Less than 25</option>
+            <option>25-30</option>
+            <option>30-35</option>
+            <option>35-40</option>
+            <option>40 +</option>
+          </select>
+        </div>
+    </div>
+    <div class="col-md-2 pt-3">
+      <div class="form-group">
+        <select id="inputState" class="form-control">
+          <option selected>Gender</option>
+          <option>Male</option>
+          <option>Female</option>
+        </select>
+      </div>
+    </div>
+    <div class="col-md-2 pt-3">
+      <div class="form-group">
+        <select id="inputState" class="form-control">
+          <option selected>Activities</option>
+          <option>Video games</option>
+          <option>Hiking</option>
+          <option>Music</option>
+          <option>Travel</option>
+        </select>
+      </div>
+    </div>
+    <div class="col-md-2 pt-3">
+      <div class="form-group">
+        <select id="inputState" class="form-control">
+          <option selected>Location</option>
+          <option>Paris</option>
+          <option>Lyon</option>
+          <option>Toulouse</option>
+          <option>Montpellier</option>
+          <option>Bordeaux</option>
+        </select>
+      </div>
+    </div>
+    <div class="col-md-2 buttonSearch">
+      <button type="button" class="btn btn-info btn-block">Search</button>
+    </div>
+  </div>
+</div>
+
+<!-- ENNND FILTER OPTIONS -->
+
+<!-- Card Profile -->
+<div class="cardProfile">
+  <div class="container-fluid mt-5 ml-2 mr-2 mb-5 justify-content-center">
+   <div class="row justify-content-center">
+     <!-- First card Profile -->
+   <% @matches.each do |match|%>
+      <div class="card m-1 col-xl-3 col-sm-12 col-md-8 col-lg-5 shadow backgroundColorCard">
+        <%= image_tag("avatar.jpg", class:'mt-4 img_profile') %> 
+        <div class="card-body">
+          <h6 class="m-0 text-white text-center text-uppercase"> <%= match.matched_user.first_name %></h6>
+          <h6 class="m-0 mt-2 text-white text-center"><i class="fas fa-map-marker-alt text-gray-300" id="iconLocation"></i> <%= match.matched_user.city.name %></h6>
+          <hr>
+          <div class="text-center">
+            <h6 class="m-0 mb-2 text-white text-uppercase">Bio</h6>
+          </div>
+          <p class="text-white text-center">
+            <%= match.matched_user.description %>
+          </p>
+          <hr>
+          <div class="text-center">
+            <%= link_to "Send match request", root_path, class:"btn btn-outline btn-sm text-uppercase mt-4" %><br/>
+            <%= link_to "See profile", match_path(match.matched_user.id), class:"btn btn-outline btn-sm text-uppercase mt-4" %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+
+    <!-- End first card profile-->
+    </div>
+  </div>
+</div>
+<!-- END Card Profile -->
