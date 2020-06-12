@@ -9,7 +9,7 @@ class Match < ApplicationRecord
     def user_cannot_be_repeated
       if user.id == matched_user.id
         puts "User cannot be Matched_user!!!"
-        errors.add(:host, "User cannot be Matched_user!!!")
+        errors.add(:base, "User cannot be Matched_user!!!")
       end
     end
 
