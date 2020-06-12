@@ -1,11 +1,5 @@
 class UsersController < ApplicationController
 
-
-  def index
-    @users = User.all
-    #@matches = Match.find(params[id]) (find only the match between users)
-  end
-
   def show
     if @user && @user.admin?
       #@matches = Match.all
@@ -69,6 +63,5 @@ class UsersController < ApplicationController
   def user_params
     params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation, :role)
   end
-
 
 end
