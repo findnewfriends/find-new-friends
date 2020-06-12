@@ -9,7 +9,13 @@
             <%= image_tag('profile_avatar', class: "avatar")%>
         </div>
         <div class="bio col-xl-5 col-sm-12 col-md-6 col-lg-5">
-            <h3><%= current_user.first_name %></h3>
+            <h3>
+                <% if current_user.first_name && current_user.last_name %>
+                    <%= current_user.first_name + ' ' + current_user.last_name %>
+                <% else %>
+                No name yet
+                <% end%>
+            </h3>
             <p><%= current_user.birthdate %></p>
             <p>
                 <i class="fas fa-map-marker-alt"></i>
@@ -77,6 +83,9 @@
         </div>
         <div class='col-lg-6 col-xl-6  col-sm-12 col-md-12 ml-lg-5 ml-xl-5 historic'>
             <h2 class='text-center mb-5 mt-4'>Match history</h2>
+            <% if current_user.matches%>
+                <p class='text-center'> No match history yet<p>
+            <% else %>
                 <table class="table">
                     <thead>
                         <tr>
@@ -87,6 +96,7 @@
                         </tr>
                     </thead>
                     <tbody>
+                    
                     <% current_user.matches.each do |match| %>
                     <% if match.status == 0%>
                         <tr>
@@ -102,12 +112,13 @@
                                 <a href="#" class='btn btn-sm p-2 btn-success'>Do a quizz with me !</a>
                             </td>
                         </tr>
-                        <% else %>
-                        <p>No match history yet</p>
-                        <% end %>
-                        <% end %>
+                    <% end %>
+                    <% end %>
+
                     </tbody>    
                 </table>
+            <% end%>
+
         </div>
     </div>
     
