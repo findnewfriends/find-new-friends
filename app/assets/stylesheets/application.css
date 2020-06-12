@@ -17,6 +17,7 @@
  *= require users
  *= require match_profile
  *= require show_match
+ *= require show_matching
  */
 section#footer{
      border-top: 1px solid gray;
