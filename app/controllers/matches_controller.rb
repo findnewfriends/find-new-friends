@@ -7,9 +7,9 @@ class MatchesController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    rescue_from CanCan::AccessDenied do |exception|
-      redirect_to :back, :alert => exception.message
-    end
+    # rescue_from CanCan::AccessDenied do |exception|
+    #   redirect_to :back, :alert => exception.message
+    # end
   end
 
 end
