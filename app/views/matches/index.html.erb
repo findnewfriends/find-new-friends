@@ -65,7 +65,7 @@
      <!-- First card Profile -->
    <% @matches.each do |match|%>
       <div class="card m-1 col-xl-3 col-sm-12 col-md-8 col-lg-5 shadow backgroundColorCard">
-        <%= image_tag("avatar.jpg", class:'mt-4 img_profile') %> 
+        <%= image_tag("avatar.jpg", class:'mt-4 img_profile') %>
         <div class="card-body">
           <h6 class="m-0 text-white text-center text-uppercase"> <%= match.matched_user.first_name %></h6>
           <h6 class="m-0 mt-2 text-white text-center"><i class="fas fa-map-marker-alt text-gray-300" id="iconLocation"></i> <%= match.matched_user.city.name %></h6>
@@ -75,6 +75,10 @@
           </div>
           <p class="text-white text-center">
             <%= match.matched_user.description %>
+          </p>
+          <hr>
+          <p class="text-dark text-center">
+            Score: <%= (1/(match.score+0.2)).round(2) %>
           </p>
           <hr>
           <div class="text-center">
