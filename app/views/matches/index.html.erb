@@ -64,18 +64,26 @@
    <div class="row justify-content-center">
      <!-- Match entries can have current_user in both user or matched_user column! -->
      <% @matches.each do |match| %>
+
      <% if current_user == match.user %>
-     <% results_user = match.matched_user %>
+        <% current_found_in_user_column = true %>
+        <% current_found_in_matched_user_column = false %>
+        <% results_user = match.matched_user %>
+     <% elsif current_user == match.matched_user %>
+        <% current_found_in_user_column = false %>
+        <% current_found_in_matched_user_column = true %>
+        <% results_user = match.user %>
      <% else %>
-     <% results_user = match.user %>
-     <% end %>
-      <div class="card m-1 col-xl-3 col-sm-12 col-md-8 col-lg-5 shadow backgroundColorCard">
-        <%= image_tag("avatar.jpg", class:'mt-4 img_profile') %>
-        <div class="card-body">
-          <h6 class="m-0 text-white text-center text-uppercase">
-          <% if results_user.first_name && results_user.last_name%>
-            <%= "#{results_user.first_name} #{results_user.last_name}" %>
-          <% else %>
+        <% puts "ERROR: current_user should be found in either match.user or match.matched_user !!!!" %>
+     <% end%>
+
+     <div class="card m-1 col-xl-3 col-sm-12 col-md-8 col-lg-5 shadow backgroundColorCard">
+       <%= image_tag("avatar.jpg", class:'mt-4 img_profile') %>
+       <div class="card-body">
+         <h6 class="m-0 text-white text-center text-uppercase">
+           <% if results_user.first_name && results_user.last_name%>
+           <%= "#{results_user.first_name} #{results_user.last_name}" %>
+           <% else %>
           No name yet
           <% end%>
            </h6>
@@ -93,7 +101,7 @@
           <p class="text-white text-center">
             <% if results_user.description %>
             <%= results_user.description %>
-            <%else %>
+            <% else %>
             No description yet
             <% end%>
           </p>
@@ -103,7 +111,28 @@
           </p>
           <hr>
           <div class="text-center">
-            <%= link_to "Send match request", root_path, class:"btn btn-outline btn-sm text-uppercase mt-4" %><br/>
+            <div class="">
+
+            <% if match.status == 1 && current_found_in_user_column || match.status == 2 && current_found_in_matched_user_column %>
+            <div class="btn btn-outline btn-sm text-uppercase mt-4 text-info">Request sent</div>
+            <% elsif match.status == 2 && current_found_in_user_column || match.status == 1 && current_found_in_matched_user_column %>
+            <div class="btn btn-outline btn-sm text-uppercase mt-4 text-warning">Request received</div>
+
+            <% else %>
+              <% if current_found_in_user_column %>
+              <% new_status = 1 %>
+              <% else %>
+              <% new_status = 2 %>
+              <% end%>
+              <%= form_with model: match do |f| %>
+              <%= f.hidden_field :user, :value => match.user.id %>
+              <%= f.hidden_field :matched_user, :value => match.matched_user.id %>
+              <%= f.hidden_field :status, :value => new_status %>
+              <%= f.submit "Send match request" , class: "btn btn-outline btn-sm text-uppercase mt-4" %>
+              <% end %>
+            <% end %>
+
+          </div>
             <%= link_to "See profile", user_path(results_user.id), class:"btn btn-outline btn-sm text-uppercase mt-4" %>
           </div>
         </div>
