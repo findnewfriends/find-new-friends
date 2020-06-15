@@ -3,11 +3,8 @@
 }
 
 .cardHeaderBackground{
-  background: linear-gradient(to right, #4ca1af, #BE93C5); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-}
-
-.tableColorText, .bioMatchUser{
-  color:white;
+  /*background: linear-gradient(to right, #4ca1af, #BE93C5); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background-color: white;
 }
 
 .avatarMatchUser{
@@ -20,4 +17,7 @@
 
 .progressBarMatchUser{
   background: linear-gradient(to right, #4ca1af, #c4e0e5); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+div.bioMatchUser h1{
+  color: #4e4e53;
 }
