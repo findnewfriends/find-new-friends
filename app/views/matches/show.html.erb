@@ -32,7 +32,7 @@
               </p>
               <p>
                   <% 3.times do %>
-                      <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
                   <% end %>
                   <i class="fas fa-star-half-alt"></i>
                   <i class="far fa-star"></i>
@@ -72,7 +72,7 @@
     <div class="card-body containerBody">
     <div class='row mt-3'>
         <div class='col-lg-5 col-xl-5 col-sm-12 col-md-12 interest'>
-            <h3 class='card-title text-center mb-5'>Interests</h3>
+            <h2 class='card-title text-center mb-4'>Interests</h2>
             <% if @user.interests %>
               <p>No interest strange...</p>
             <% else %>
@@ -85,7 +85,7 @@
             <% end %>
         </div>
         <div class='card-text col-lg-6 col-xl-6 col-sm-12 col-md-12 ml-lg-5 ml-xl-5'>
-          <h2>Who I am ?</h2>
+          <h2 class="mb-4">Who I am ?</h2>
           <p>
               <% if @user.description%>
                 <%= @user.description %>
