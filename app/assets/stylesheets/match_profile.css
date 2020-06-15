@@ -1,0 +1,37 @@
+p{
+  font-size:15px;
+}
+
+hr{
+  background-color:white;
+}
+
+.img_profile{
+  padding: 1px;
+  border-radius: 50%;
+  border: 2px solid white;
+  width: 180px;
+  height: 180px;
+  margin:auto;
+  margin-top: 10px;
+}
+/* commence */
+
+.backgroundColorCard{
+  background: linear-gradient(to right, #be93c5, #7bc6cc); 
+
+}
+
+.btn-outline{
+  background-color: white;
+}
+
+.btn-outline:hover {
+  background-color: #858796; /* Green */
+  color: white;
+}
+
+#iconLocation{
+  font-size:13px;
+}
+

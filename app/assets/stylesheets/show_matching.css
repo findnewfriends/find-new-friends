@@ -1,0 +1,31 @@
+.tableInfoUser{
+  margin-top: 90px;
+}
+
+.cardHeaderBackground{
+  background: linear-gradient(to right, #4ca1af, #BE93C5); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+
+  /* background-color: white; */
+}
+
+.avatarMatchUser{
+  width: 200px;
+  height: auto;
+  border-radius: 50%;
+  border: 2px solid white;
+  padding: 2px;
+}
+
+.progressBarMatchUser{
+  background: linear-gradient(to right, #4ca1af, #c4e0e5); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+.bioMatchUser h1{
+  color: white;
+}
+
+.bioMatchUser p{
+  color: white;
+}
+
+.tableInfoUser th, td{
+  color:white;
+}

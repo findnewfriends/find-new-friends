@@ -1,0 +1,104 @@
+// Place all the styles related to the Users controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+
+p{
+    color:#858796;
+}
+
+h3, h2{
+    color:#4e4e53;
+}
+
+// Banner 
+section.banner{
+    border-bottom: 1px solid gray;
+    // background-color: #f4f4f8;
+    h1.title{
+        background: linear-gradient(to right, #b993d6, #8ca6db); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+        border-radius: 7px;
+        padding:10px;
+        color:white;
+    }
+    div.box_avatar{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    div.bio{
+        padding-left: 2rem;
+    }
+}
+//        position: absolute;
+//bottom: -30%;
+// left: 1%;
+// position: relative;
+
+// Send match request
+div.request{
+    border-bottom: 1px solid gray;
+    padding-bottom: 1em ;
+    margin-top: 1em;
+    div.box_bio{
+        div.bio{
+            margin-left: 2em;
+        }
+    }
+    div.buttons{
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+    }
+
+}
+
+// Historic and interests
+section#historic_and_interest{
+    padding-top: 0px;
+    div.interest{
+        h2{
+            margin-top: 1em;
+        }
+        div.button{
+            margin-top: 3em;
+        }
+    }
+    div.historic{
+        td p{
+            margin-bottom: 0;
+        }
+    }
+    div.progress-bar{
+        background: linear-gradient(90deg, rgba(228,91,91,1) 0%, rgba(129,129,252,1) 0%, rgba(54,185,204,1) 100%);
+    }
+}
+
+// Utilitaries
+.avatar{
+    width: 200px;
+    height: auto;
+    border-radius: 50%;
+    padding:1px;
+    border: 3px solid gray;
+}
+
+// Responsive
+@media screen and (min-width: 2000px){
+    section.banner{
+        div.box_avatar{
+            img{
+                margin-left: 10rem;
+            }
+        }
+    }
+}
+@media screen and (max-width: 767px){
+    div.bio{
+        text-align: center;
+    }
+}
+@media screen and (max-width: 991px){
+    div.description{
+        margin-top: 2em;
+    }
+}

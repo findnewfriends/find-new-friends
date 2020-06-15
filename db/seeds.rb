@@ -8,14 +8,13 @@
 
 # Destroy all tables and restart the id at 1
 
-City.destroy_all
-Job.destroy_all
+JoinUserInterest.destroy_all
 User.destroy_all
 Feedback.destroy_all
 Flag.destroy_all
 Interest.destroy_all
-User.destroy_all
-User.destroy_all
+City.destroy_all
+Job.destroy_all
 
 
 #City
@@ -34,7 +33,8 @@ end
 
 
 #User
-33.times do |index|
+number_of_users = 10
+number_of_users.times do |index|
   u = User.new
   u.email = "findnewfriends_#{index}@yopmail.com"
   u.email = "findnewfriends_admin@yopmail.com" if index == 0
@@ -51,7 +51,7 @@ end
 end
 
 #Feedback
-60.times do |index|
+(number_of_users*2).times do |index|
   u = Feedback.new
   u.author = User.all.sample
   u.recipient = User.all.sample
@@ -62,7 +62,7 @@ end
 end
 
 #Flag
-7.times do |index|
+(number_of_users/10).times do |index|
   u = Flag.new
   u.author = User.all.sample
   u.recipient = User.all.sample
@@ -71,29 +71,25 @@ end
 end
 
 #Interest
-5.times do |index|
+interest=%w(Painting Sports Board\ games Video\ games Travelling Movies Music Photography Stand\ up Reading Meditation Hiking Cooking)
+interest.length.times do |index|
   u = Interest.new
-  u.name = %w(Painting Sports Board\ games Video\ games Travelling )[index]
+  u.name = interest[index]
   puts "Interest #{index} created" if u.save
 end
 
 #JoinUserInterest
-5.times do |index|
-  u = JoinUserInterest.new
-  u.user = User.all.sample
-  u.interest = Interest.all.sample
-  u.intensity = rand(1..5)
-  puts "JoinUserInterest #{index} created" if u.save
+User.all.each_with_index do |user,index|
+  9.times do
+    u = JoinUserInterest.new
+    u.user = user
+    u.interest = Interest.all.sample
+    u.intensity = rand(1..5)
+    puts "JoinUserInterest #{index} created" if u.save
+  end
 end
 
-#Match
-5.times do |index|
-  u = Match.new
-  u.user = User.all.sample
-  u.matched_user = User.all.sample
-  u.score = rand(1..100)
-  puts "Match #{index} created" if u.save
-end
+
 
 
 

@@ -1,2 +1,99 @@
-<h1>Match#show</h1>
-<p>Find me in app/views/match/show.html.erb</p>
+<div class="container justify-content-center mt-5 mb-5">
+  <div class="card shadow">
+  <!-- START CARD HEADER-->
+    <div class="card-header cardHeaderBackground">
+    
+      <div class='row p-4'>   
+          <div class="box_avatar mr-2 col-xl-2 col-sm-8 col-md-6 col-lg-2">
+              <%= image_tag('profile_avatar', class: "avatarMatchUser")%>
+          </div>
+          <div class="bioMatchUser ml-5 mt-4 col-xl-4 col-sm-12 col-md-4 col-lg-3">
+              <h1>
+                <% if @user.first_name && @user.last_name%>
+                  <%= @user.first_name  + ' ' + @user.last_name %>
+                <% else%>
+                 No name yet
+                <% end%>
+              </h1>
+              <p>
+                <% if @user.birthdate %>
+                  <%= @user.birthdate %>
+                <%else%>
+                  No date yet
+                <% end%>
+              </p>
+              <p>
+                  <i class="fas fa-map-marker-alt"></i>
+                  <% if @user.city%>
+                    <%= @user.city.name%>
+                  <% else%>
+                     No city yet
+                  <% end %>
+              </p>
+              <p>
+                  <% 3.times do %>
+                    <i class="fas fa-star"></i>
+                  <% end %>
+                  <i class="fas fa-star-half-alt"></i>
+                  <i class="far fa-star"></i>
+              </p>
+              
+          </div>
+          <!-- table info user -->
+          <div class="tableInfoUser row col-xl-5 col-sm-12 col-md-12 col-lg-5">
+          <table class="table tableColorText">
+              <thead>
+                  <tr>
+                      <th scope="col">Mathing</th>
+                      <th scope="col">Last login</th>
+                  </tr>
+              </thead>
+              <tbody> 
+                <tr>
+                    <td scope="row">
+                    <% if @user.matches.count != 0 %>
+                      <%= @user.matches.count %>
+                    <% else %>
+                     No matches yet
+                    <% end %>
+                    </td>
+                    <td>30 Juillet 2020</td> 
+                </tr> 
+              </tbody>  
+          </table>
+          </div>
+        <!-- end table info user-->
+        <div class="col-xl-3 col-sm-6 col-md-6 col-lg-3 ml-3">
+          <a href="#" class="sendMathRequestButton btn btn-info mt-3 mb-3">Send match request</a>
+        </div>
+      </div>
+    </div>
+    <!-- END CARD HEADER-->
+    <div class="card-body containerBody">
+    <div class='row mt-3'>
+        <div class='col-lg-5 col-xl-5 col-sm-12 col-md-12 interest'>
+            <h2 class='card-title text-center mb-4'>Interests</h2>
+            <% if @user.interests %>
+              <p>No interest strange...</p>
+            <% else %>
+              <% @user.interests.each do |interest|%>
+              <h4><%= interest.name %></h4>
+              <div class="progress mb-5">
+                  <div class="progress-bar progressBarMatchUser" role="progressbar" style="width: 100%;" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
+              <% end %>
+            <% end %>
+        </div>
+        <div class='card-text col-lg-6 col-xl-6 col-sm-12 col-md-12 ml-lg-5 ml-xl-5'>
+          <h2 class="mb-4">Who I am ?</h2>
+          <p>
+              <% if @user.description%>
+                <%= @user.description %>
+              <% else %>
+                No description yet
+              <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
