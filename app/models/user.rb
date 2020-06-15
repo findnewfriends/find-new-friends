@@ -39,7 +39,7 @@ class User < ApplicationRecord
 
 
   def admin?
-    self.role == "admin"
+    self.role == "admin" unless self.nil?
   end
 
 end

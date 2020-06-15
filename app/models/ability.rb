@@ -4,22 +4,35 @@ class Ability
   include CanCan::Ability
 
   def initialize(user)
-
+    puts "\nO----------------XXXX----------------THIS IS A CONSOLE NEW PAGE LOAD SEPARATOR-----------------XXXX---------------O\n\n"
+    puts user
+    # user ||= User.new # guest user (not logged in)
 
     alias_action :create, :read, :update, :destroy, to: :crud
     alias_action :read, :destroy, to: :rd
 
-    if user.present? 
-      can :manage, :all
-    end
-
-    if user.admin?
-      can :manage, :all
-    end
 
 
-    # Define abilities for the passed in user here. For example:
-    #
+    # Users
+    return unless user.present?
+    puts "================== user.present? = #{user.present?}"
+    can [:show], User
+    can [:update], User, id: user.id
+    can [:index,:update,:create,:destroy], Match, {user:{id: user.id}}
+    can [:index,:update,:create,:destroy], Match, {matched_user:{id: user.id}}
+
+
+    # Admins:
+    return unless user.admin?  # additional permissions for administrators
+    puts "================== user.admin? = #{user.admin?}"
+    can :manage, :all
+  end
+end
+
+
+
+# Define abilities for the passed in user here. For example:
+#
     #   user ||= User.new # guest user (not logged in)
     #   if user.admin?
     #     can :manage, :all
@@ -44,5 +57,3 @@ class Ability
     #
     # See the wiki for details:
     # https://github.com/CanCanCommunity/cancancan/wiki/Defining-Abilities
-  end
-end
