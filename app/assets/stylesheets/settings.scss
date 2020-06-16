@@ -1,0 +1,34 @@
+section.settings{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    h1{
+        background: linear-gradient(to right, #b993d6, #8ca6db);
+        width: 100%;
+        color:white;
+    }
+    div.form-group{
+        margin-bottom: 3rem;
+    }
+    div#password{
+        margin-bottom: 1em;
+    }
+}
+.form-signin{
+    width: 100%;
+    max-width: 330px;
+    padding: 15px;
+    margin: 0 auto;
+}
+div#email{
+    margin-bottom: 2rem;
+}
+div.form-group#current_password{
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+}
+div.cancel_account{
+    margin-top: 2rem;
+}

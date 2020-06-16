@@ -16,10 +16,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
     interests = params[:interests][:ids]
     interests.delete_at(0)
     if interests.length == 0
-      flash[:danger_3] = 'You need to put 1 interest minimum'
+      flash[:danger] = 'You need to put 1 interest minimum'
     end
     
-    if flash[:danger_1] || flash[:danger_2] || flash[:danger_3]
+    if flash[:danger]
       redirect_to new_user_registration_path
     else
       super
@@ -32,12 +32,17 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
    #GET /resource/edit
    def edit
+    @cities = City.all
      super
    end
 
    #PUT /resource
    def update
-     super
+    super
+
+    if resource.errors.empty?
+      User.find(current_user.id).update(city_id: params[:user][:city].to_i )      
+    end
    end
 
    #DELETE /resource
