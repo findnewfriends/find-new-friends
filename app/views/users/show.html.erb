@@ -94,7 +94,8 @@
             <% end %>
 
             <div class='button text-center'>
-                <a href="#" class='btn btn-md p-2 btn-info mb-4'>Add Interest</a>
+                <a href="<%= new_interest_path%>" class='btn btn-md p-2 btn-info mb-4'>Add Interest</a>
+                <a href="<%= interests_path%>" class='btn btn-md p-2 btn-info mb-4'>Modify Interests</a>
             </div>
         </div>
         <div class='col-lg-6 col-xl-6  col-sm-12 col-md-12 ml-lg-5 ml-xl-5 historic'>
@@ -125,7 +126,6 @@
                             </td>
                             <td>
                                 <a href="<%= match_path(match.matched_user.id) %>" class='btn btn-sm p-2 btn-primary mb-2'>See profile</a>
-                                <a href="#" class='btn btn-sm p-2 btn-success'>Do a quizz with me !</a>
                             </td>
                         </tr>
                     <% end %>

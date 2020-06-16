@@ -4,4 +4,5 @@ Rails.application.routes.draw do
   root :to => 'static_pages#home'
   resources :matches, only: [:show, :index, :update]
   resources :users, only: [:index, :show]
+  resources :interests, only: [:new, :create, :index, :delete, :destroy]
 end

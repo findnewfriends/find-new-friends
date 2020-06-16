@@ -1,0 +1,27 @@
+<section class='container'>
+    <h1 class='text-center'>Modify interests</h1>
+    <table class='table allInterests'>
+        <thead>
+            <td>My interest</td>
+            <td>Actions</td>
+        </thead>
+        <tbody>
+            <% @interests.each do |interest|%>
+                <tr>
+                    <td><%= interest.name %></td>
+                    <td>
+                        <% unless @interests.count <= 1%>
+                            <a href='<%= interest_path(interest.id) %>'class='btn btn-danger' data-method='delete' data-confirm='Are you sure to delete this interest'>Delete</a>
+                        <% else %>
+                            You cannot delete your own interest
+                        <% end%>
+                    </td>
+                </tr>
+            <% end%>
+        </tbody>
+    </table>
+    <div class='text-center'>
+        <a href="<%= user_path(current_user.id)%>" class='btn btn-success '>Go back to profile</a>
+    </div>
+
+</section>

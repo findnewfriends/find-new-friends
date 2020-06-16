@@ -1,0 +1,21 @@
+<section class='container-fluid'>  
+    
+    <h1 class='text-center titleInterest'>Add one or more interest </h2>
+        <%= form_tag(interests_path, :method => "post") do %>
+        <div class='row text-justify text-center'>
+            <% @interests.each do |interest| %>
+                <% unless JoinUserInterest.find_by(user: current_user, interest: interest.id).present?%>
+                    <div class='col-sm-12 col-md-12 col-lg-6 col-xl-6'>
+                            <%= check_box_tag interest.id, interest.id %>
+                            <%= label_tag interest.name %>
+                    </div>
+                <% end%>
+
+            <% end %>
+        </div>
+        <div class='text-center box_submit'>        
+            <%= submit_tag("Sign up", class: 'btn btn-primary') %>
+        </div>
+        <% end %>        
+
+</section>

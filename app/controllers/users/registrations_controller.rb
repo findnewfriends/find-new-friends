@@ -12,21 +12,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
    #POST /resource
    def create
-    @interests = Interest.all
-    interests = params[:interests][:ids]
-    interests.delete_at(0)
-    if interests.length == 0
-      flash[:danger] = 'You need to put 1 interest minimum'
-    end
-    
-    if flash[:danger]
-      redirect_to new_user_registration_path
-    else
-      super
-      interests.each do |interest|
-        JoinUserInterest.create(user: current_user, interest: Interest.find(interest.to_i))
-      end
-    end
+    super
 
    end
 
@@ -40,7 +26,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
    def update
     super
 
-    if resource.errors.empty?
+    if resource.errors.empty? && params[:user][:city].to_i != 0
       User.find(current_user.id).update(city_id: params[:user][:city].to_i )      
     end
    end
