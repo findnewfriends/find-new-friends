@@ -1,66 +1,120 @@
-<section class='settings container'>
-  <h1 class='text-center title mb-5'><i class="fas fa-cog"></i> Settings Page <i class="fas fa-cog"></i></h2>
 
-  <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, class: 'form-signin' }) do |f| %>
-    <%= render "devise/shared/error_messages", resource: resource %>
 
-      <div class="form-group " id='email'>
-        <%= f.label :change_email %>
-      <%= f.email_field :email, autofocus: true, autocomplete: "email", class:'form-control', placeholder: 'email' %>
-    </div>
+<h1 class='text-center title mt-5 text-secondary'><i class="fas fa-cog"></i> Account settings</i></h1>
 
-    <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-      <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-    <% end %>
-
-    <div class="form-group" id='password'>
-        <%= f.label :change_password %>
-      <%= f.password_field :password, autocomplete: "new-password", class:'form-control', placeholder: 'Password' %>
-    </div>
-
-    <div class="form-group">
-      <%= f.password_field :password_confirmation, autocomplete: "new-password", class:'form-control', placeholder: 'Password confirmation' %>
-       <i>leave blank if you don't want to change it</i>
-    </div>
-
-    <div class='form-group'>
-        <%= f.label :add_description %>
-        <%= f.text_area :description, autocomplete: "add description", class:'form-control', placeholder: 'Add new description'%>
-       <i>leave it if you don't want to change it</i>
-    </div>
-    <div class='form-group'>
-        <%= f.label :change_name %>
-        <div class='row'>
-          <%= f.text_field :first_name, autocomplete: "add description", class:'form-control col-sm-6', placeholder: 'Change first name'%>
-          <%= f.text_field :last_name, autocomplete: 'change last_name', class:'form-control col-sm-6', placeholder: 'Change last name'%>
+<div class="container justify-content-center mt-5 mb-5">
+  <div class="card shadow">
+    <!-- START CARD HEADER-->
+      <div class="card-header cardHeaderBackground">
+      
+        <div class='row p-4'>   
+            <div class="box_avatar mr-2 col-xl-2 col-sm-8 col-md-6 col-lg-2">
+                <%= image_tag('profile_avatar', class: "avatarMatchUser")%>
+            </div>
+            <div class="bioMatchUser ml-5 mt-4 col-xl-4 col-sm-12 col-md-4 col-lg-3">
+                <h3 class="text-white">
+                  <% if @user.first_name && @user.last_name%>
+                    <%= @user.first_name  + ' ' + @user.last_name %>
+                  <% else%>
+                  No name yet
+                  <% end%>
+                </h3>
+                <p>
+                  <% if @user.birthdate %>
+                    <%= @user.birthdate %>
+                  <%else%>
+                    No date yet
+                  <% end%>
+                </p>
+                <p>
+                  <i class="fas fa-map-marker-alt"></i>
+                  <% if @user.city%>
+                    <%= @user.city.name%>
+                  <% else%>
+                      No city yet
+                  <% end %>
+                </p>
+                <p>
+                  <% 3.times do %>
+                    <i class="fas fa-star"></i>
+                  <% end %>
+                  <i class="fas fa-star-half-alt"></i>
+                  <i class="far fa-star"></i>
+                </p>
+            </div>
         </div>
-       <i>leave it if you don't want to change it</i>
-    </div>
-    <div class='form-group'>
-      <%= f.label :choose_city %><br>
-        <%= f.select :city, City.all.collect { |p| [ p.name, p.id ] }, {:include_blank => true}, :class => 'form-control'%>
-    </div>
-    
-    <div class='form-group'>
-      <%= f.label :birthdate%>
-      <%= f.date_field :birthdate, autocomplete: 'Add Birthdate', class:'form-control', placeholder: 'Add Birthdate'%>
-       <i>leave it if you don't want to change it</i>
+      </div>
+      <!-- END CARD HEADER-->
+      <div class="card-body containerBody">
+        <div class='row mt-3'>
+          <div class='col-lg-6 col-xl-6 col-sm-12 col-md-12 interest'>
+      
+            <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, class: 'form-signin' }) do |f| %>
+              <%= render "devise/shared/error_messages", resource: resource %>
 
-    </div>
+              <div class="form-group " id='email'>
+                <%= f.label :change_email %>
+                <%= f.email_field :email, autofocus: true, autocomplete: "email", class:'form-control', placeholder: 'email' %>
+              </div>
 
-    <div class="form-group" id='current_password'>
-      <%= f.label :current_password %>
-      <%= f.password_field :current_password, autocomplete: "current-password", class:'form-control', placeholder: 'Current Password' %>
-    </div>
+              <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+                <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+              <% end %>
 
-    <div class="actions">
-      <%= f.submit "Update", class:'btn btn-lg btn-primary' %>
-    </div>
-  <% end %>
+              <div class="form-group" id='password'>
+                <%= f.label :change_password %>
+                <%= f.password_field :password, autocomplete: "new-password", class:'form-control', placeholder: 'Password' %>
+              </div>
 
-  <div class='cancel_account'>
-    <h3>Cancel my account</h3>
-    <p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?"}, method: :delete, class:'btn btn-primary'  %></p>
+              <div class="form-group">
+                <%= f.password_field :password_confirmation, autocomplete: "new-password", class:'form-control', placeholder: 'Password confirmation' %>
+                <small class="text-muted">Leave blank if you don't want to change it</small>
+              </div>
+
+              <div class='form-group'>
+                <%= f.label :change_name %>
+                <%= f.text_field :first_name, autocomplete: "add description", class:'form-control col-sm-12', placeholder: 'Change first name'%>
+                <%= f.text_field :last_name, autocomplete: 'change last_name', class:'form-control col-sm-12 mt-2', placeholder: 'Change last name'%>
+                <small class="text-muted">Leave blank if you don't want to change it</small>
+              </div>
+
+              <div class='form-group'>
+                <%= f.label :add_description %>
+                <%= f.text_area :description, autocomplete: "add description", class:'form-control', placeholder: 'Add new description'%>
+                <small class="text-muted">Leave blank if you don't want to change it</small>
+              </div>
+          </div>
+          
+          <div class='card-text col-lg-5 col-xl-5 col-sm-12 col-md-12 ml-lg-5 ml-xl-5 mt-3'>
+            <div class='form-group'>
+              <%= f.label :choose_city %><br>
+              <%= f.select :city, City.all.collect { |p| [ p.name, p.id ] }, {:include_blank => true}, :class => 'form-control'%>
+            </div>
+        
+            <div class='form-group'>
+              <%= f.label :birthdate%>
+              <%= f.date_field :birthdate, autocomplete: 'Add Birthdate', class:'form-control', placeholder: 'Add Birthdate'%>
+              <small class="text-muted">Leave blank if you don't want to change it</small>
+            </div>
+
+            <div class="form-group" id='current_password'>
+              <%= f.label :current_password %>
+              <%= f.password_field :current_password, autocomplete: "current-password", class:'form-control', placeholder: 'Current Password' %>
+            </div>
+
+            <div class="actions">
+              <%= f.submit "Update", class:'btn btn-lg btn-primary' %>
+            </div>
+
+          <% end %>
+
+          <div class='cancel_account'>
+            <p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?"}, method: :delete, class:'btn btn-danger btn-sm'  %></p>
+          </div>
+
+        </div>
+          
+      </div>
+    </div>
   </div>
-
-</section>
+</div>
