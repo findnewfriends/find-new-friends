@@ -15,9 +15,9 @@
         </fieldset ><fieldset class=" col-2">
         <%= select_tag :gender,  options_for_select(["Female", "Male", "Other"], params[:gender]), class: "form-control" , include_blank: "Gender"%>
         </fieldset ><fieldset class=" col-2">
-        <%= f.collection_select :interest, Interest.all, :id, :name, {include_blank: "Interest"}, class: "form-control"  %>
+        <%= f.collection_select :interest, Interest.all, :id, :name, {selected:params[:interest], include_blank: "Interest"}, class: "form-control"  %>
         </fieldset ><fieldset class=" col-2">
-        <%= f.collection_select :city, City.all, :id, :name, {include_blank: "City"},  class: "form-control"  %>
+        <%= f.collection_select :city, City.all, :id, :name, {selected:params[:city], include_blank: "City"}, class: "form-control" %>
         </fieldset ><fieldset class=" col-2">
         <%= f.submit "Filter" , class: "btn btn-info btn-block" %>
         </fieldset >

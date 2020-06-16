@@ -3,41 +3,44 @@ class MatchesController < ApplicationController
 
   def index
     # @users = User.all
-    @matches = @matches.none
     puts "========================= PARAMS = #{params}"
-    puts "========================= PARAMS = #{params}"
-    puts "========================= PARAMS = #{params}"
-    puts "========================= PARAMS = #{params}"
-    puts "========================= PARAMS = #{params}"
-    puts "========================= PARAMS = #{params}"
-    puts "========================= PARAMS = #{params}"
-    puts "========================= PARAMS = #{params}"
-    puts "========================= PARAMS = #{params}"
-    matches = Match.all.where(user:current_user).or(Match.all.where(matched_user:current_user)).order(:score)
-    puts "@matches.length before filtering= #{matches.length}"
-    if params[:gender] == 'Male'
-      gender_col_1 = matches.joins(:matched_user).where(user:current_user).where(users:{gender:'M'})
-      gender_col_2 = matches.joins(:user).where(matched_user:current_user).where(users:{gender:'M'})
-      @matches = gender_col_1 | gender_col_2
-      puts "@matches.length male= #{@matches.length}"
-    elsif params[:gender] == 'Female'
-      gender_col_1 = matches.joins(:matched_user).where(user:current_user).where(users:{gender:'F'})
-      gender_col_2 = matches.joins(:user).where(matched_user:current_user).where(users:{gender:'F'})
-      @matches = gender_col_1 | gender_col_2
-      puts "@matches.length female= #{@matches.length}"
-    elsif params[:gender] == 'Other'
-      gender_col_1 = matches.joins(:matched_user).where(user:current_user).where(users:{gender:'O'})
-      gender_col_2 = matches.joins(:user).where(matched_user:current_user).where(users:{gender:'O'})
-      @matches = gender_col_1 | gender_col_2
-      puts "@matches.length other= #{@matches.length}"
-    else
-      @matches = matches
-      puts "\n\n\n\n@matches.length all = #{@matches.length}\n\n\n\n"
-    end
-
     # Parameters: {"age"=>"Less than 25", "gender"=>"Female", "interest"=>"14", "city"=>"14"}
 
+    matches = Match.all.where(user:current_user).joins(:matched_user).order(:score)
+    puts "@matches.length before filtering= #{@matches.length}"
 
+    #GENDER FILTER
+    if params[:gender] && params[:gender] != ''
+      matches = matches.where(users:{gender:params[:gender][0]})
+    end
+
+    #CITY FILTER
+    if params[:city] && params[:city] != ''
+      selected_city = params[:city].to_i
+      matches = matches.where(users:{city: selected_city })
+      puts "@matches.length after city filter= #{@matches.length}"
+    end
+    #AGE FILTER
+    if params[:age] && params[:age] != ''
+      case params[:age]
+      when "Less than 25"
+        time_range = (Time.now - 25.year)..(Time.now - 18.year)
+      when "25-30"
+        time_range = (Time.now - 30.year)..(Time.now - 25.year)
+      when "30-35"
+        time_range = (Time.now - 35.year)..(Time.now - 30.year)
+      when "More than 35"
+        time_range = (Time.now - 99.year)..(Time.now - 35.year)
+      end
+      matches = matches.where('users.birthdate' => time_range)
+    end
+    
+    # if params[:interest] && params[:interest] != ''
+    #   # matches = matches.where(users:{interest: params[:interest].to_i })
+    #   puts "@matches.length after interest filter= #{@matches.length}"
+    # end
+
+    @matches = matches
 
   end
 
