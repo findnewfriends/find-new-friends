@@ -3,6 +3,8 @@
     <h1 class='text-center title mb-5'>
         <i class="fas fa-user-circle"></i>
         Profile Page
+        <a href="<%= edit_user_registration_path %>" class="settings"><i class="fas fa-cog"></i></a>
+        
     </h1>
     <div class='row'>   
         <div class="box_avatar col-xl-2 col-sm-12 col-md-6 col-lg-2">
@@ -13,10 +15,16 @@
                 <% if current_user.first_name && current_user.last_name %>
                     <%= current_user.first_name + ' ' + current_user.last_name %>
                 <% else %>
-                No name yet
+                    No name yet
                 <% end%>
             </h3>
-            <p><%= current_user.birthdate %></p>
+            <p>
+                <% if current_user.birthdate%>
+                    <%= current_user.birthdate %>
+                <% else %>        
+                    No birthdate yet
+                <% end%>
+            </p>
             <p>
                 <i class="fas fa-map-marker-alt"></i>
                 <% if current_user.city %>
@@ -36,33 +44,41 @@
         <div class="description col-xl-5 col-sm-12 col-md-12 col-lg-5">
             <h3>Who I am ?</h3>
             <p>
-                <%= current_user.description %>
+                <% if current_user.description%>
+                    <%= current_user.description %>
+                <% else %>
+                    No description
+                <% end%>
             </p>
         </div>
     </div>
-
+    <div class='settings'>
+        <a href="<%= edit_user_registration_path %>" class='btn btn-lg btn-primary'><i class="fas fa-cog"></i> Settings <i class="fas fa-cog"></i> </a>
+    </div>
 </section>
+
 <section class="container match">
     <h2 class="mb-5 text-center">New match requests</h2>
+    <% if current_user.matches %>
+        <p class="text-center">No match request yet</p>
+    <% end %>
     <% current_user.matches.each do |match| %>
-    <% if match.status == 2 %>
-        <div class="request row">
-            <%= image_tag('avatar_2', class: "avatar") %>
-            <div class='box_bio col-xl-5 col-sm-12 col-md-4 col-lg-5'>
-                <div class='bio'>
-                    <h3><%= match.matched_user.first_name %></h3>
-                    <p>Would you like to talk about Football ?</p>
-                    <a href="<%= match_path(match.matched_user.id) %>" class='btn btn-sm btn-primary p-2 mb-3'>See profile</a>
+        <% if match.status == 2 %>
+            <div class="request row">
+                <%= image_tag('avatar_2', class: "avatar") %>
+                <div class='box_bio col-xl-5 col-sm-12 col-md-4 col-lg-5'>
+                    <div class='bio'>
+                        <h3><%= match.matched_user.first_name %></h3>
+                        <p>Would you like to talk about Football ?</p>
+                        <a href="<%= match_path(match.matched_user.id) %>" class='btn btn-sm btn-primary p-2 mb-3'>See profile</a>
+                    </div>
+                </div>
+                <div class='buttons col-xl-4 col-sm-12 col-md-4 col-lg-5'>
+                    <a href="#" class='btn btn-sm btn-success mr-2 p-2'>Accept Match Request</a>
+                    <a href="#" class='btn btn-sm btn-danger p-2'>Refuse Match Request</a>
                 </div>
             </div>
-            <div class='buttons col-xl-4 col-sm-12 col-md-4 col-lg-5'>
-                <a href="#" class='btn btn-sm btn-success mr-2 p-2'>Accept Match Request</a>
-                <a href="#" class='btn btn-sm btn-danger p-2'>Refuse Match Request</a>
-            </div>
-        </div>
-        <% else %>
-        <p class="text-center">No match request yet</p>
-      <% end %>
+        <% end %>
     <% end %>
 </section>
 
