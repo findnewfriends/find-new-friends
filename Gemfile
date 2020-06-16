@@ -13,6 +13,7 @@ gem 'devise'
 gem 'stripe'
 gem 'rspec'
 gem 'cancancan'
+gem 'jquery-rails'
 
 
 # Test SSH3 < (antu)
