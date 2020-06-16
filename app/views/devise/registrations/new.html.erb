@@ -44,14 +44,7 @@
                   <% end %><br />
                 </div>
               </div>
-              <h2>Choose a interest (One minimum)</h2>
-                <div class='row'>
-                  <%= collection_check_boxes(:interests, :ids,Interest.all, :id, :name) do |b| %>
-                  <div class='col-sm-12 col-md-12 col-lg-6 col-xl-6'>
-                      <%= b.label(class: "my-coucou") { b.check_box(checked: false) + ' ' + b.text} %>
-                  </div>
-                  <% end %>
-                </div>
+              
 
               <%= f.submit "Sign up", class:"btn btn-primary btn-user btn-block" %>
             <% end %>
