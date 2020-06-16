@@ -94,16 +94,6 @@ section#historic_and_interest{
     border: 3px solid gray;
 }
 
-// Responsive
-@media screen and (min-width: 2000px){
-    section.banner{
-        div.box_avatar{
-            img{
-                margin-left: 10rem;
-            }
-        }
-    }
-}
 @media screen and (max-width: 767px){
     div.bio{
         text-align: center;
