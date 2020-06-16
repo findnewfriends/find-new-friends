@@ -5,65 +5,40 @@
   <h2 class="mb-3 text-info">Find your new mate today! </h2>
   <p class="text-secondary">It's as easy as it looks ! Just select the field you are looking for and click search <i class="far fa-smile-beam"></i>.</p>
 </div>
-	<div class="row align-items-center justify-content-center">
-      <div class="col-md-2 pt-3">
-        <div class="form-group ">
-          <select id="inputState " class="form-control">
-            <option selected>Age</option>
-            <option>Less than 25</option>
-            <option>25-30</option>
-            <option>30-35</option>
-            <option>35-40</option>
-            <option>40 +</option>
-          </select>
-        </div>
-    </div>
-    <div class="col-md-2 pt-3">
-      <div class="form-group">
-        <select id="inputState" class="form-control">
-          <option selected>Gender</option>
-          <option>Male</option>
-          <option>Female</option>
-        </select>
+	<div class="row align-items-center justify-content-center p-3">
+
+<div class="d-inline-flex justify-content-center">
+
+        <fieldset class="col-2">
+        <%= form_with local: true, url: matches_path, method: :get  do |f| %>
+        <%= select_tag :age,  options_for_select(["Less than 25", "25-30", "30-35", "More than 35"], params[:age]), class: "form-control" , include_blank: "Age"%>
+        </fieldset ><fieldset class=" col-2">
+        <%= select_tag :gender,  options_for_select(["Female", "Male", "Other"], params[:gender]), class: "form-control" , include_blank: "Gender"%>
+        </fieldset ><fieldset class=" col-2">
+        <%= f.collection_select :interest, Interest.all, :id, :name, {include_blank: "Interest"}, class: "form-control"  %>
+        </fieldset ><fieldset class=" col-2">
+        <%= f.collection_select :city, City.all, :id, :name, {include_blank: "City"},  class: "form-control"  %>
+        </fieldset ><fieldset class=" col-2">
+        <%= f.submit "Filter" , class: "btn btn-info btn-block" %>
+        </fieldset >
+        <% end %>
       </div>
-    </div>
-    <div class="col-md-2 pt-3">
-      <div class="form-group">
-        <select id="inputState" class="form-control">
-          <option selected>Activities</option>
-          <option>Video games</option>
-          <option>Hiking</option>
-          <option>Music</option>
-          <option>Travel</option>
-        </select>
-      </div>
-    </div>
-    <div class="col-md-2 pt-3">
-      <div class="form-group">
-        <select id="inputState" class="form-control">
-          <option selected>Location</option>
-          <option>Paris</option>
-          <option>Lyon</option>
-          <option>Toulouse</option>
-          <option>Montpellier</option>
-          <option>Bordeaux</option>
-        </select>
-      </div>
-    </div>
-    <div class="col-md-2 buttonSearch">
-      <button type="button" class="btn btn-info btn-block">Search</button>
-    </div>
+
+
+
+
   </div>
 </div>
 
 <!-- ENNND FILTER OPTIONS -->
 
 <!-- Card Profile -->
-<div class="cardProfile">
+<div class="cardProfile"><h1><%= "#{@matches.length} Results"%></h1>
+
   <div class="container-fluid mt-5 ml-2 mr-2 mb-5 justify-content-center">
    <div class="row justify-content-center">
      <!-- Match entries can have current_user in both user or matched_user column! -->
-     <% @matches.each do |match| %>
+     <% @matches.each_with_index do |match,index| %>
 
      <% if current_user == match.user %>
         <% current_found_in_user_column = true %>
@@ -77,6 +52,8 @@
         <% puts "ERROR: current_user should be found in either match.user or match.matched_user !!!!" %>
      <% end%>
 
+
+     <% if match.score < 1 || true %>
      <div class="card m-1 col-xl-3 col-sm-12 col-md-8 col-lg-5 shadow backgroundColorCard">
        <%= image_tag("avatar.jpg", class:'mt-4 img_profile') %>
        <div class="card-body">
@@ -124,6 +101,7 @@
               <% else %>
               <% new_status = 2 %>
               <% end%>
+
               <%= form_with model: match do |f| %>
               <%= f.hidden_field :user, :value => match.user.id %>
               <%= f.hidden_field :matched_user, :value => match.matched_user.id %>
@@ -137,6 +115,7 @@
           </div>
         </div>
       </div>
+    <% end %>
     <% end %>
 
     <!-- End first card profile-->

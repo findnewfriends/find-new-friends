@@ -41,8 +41,8 @@ number_of_users.times do |index|
   u.password = '123123' #Faker::Internet.password
   u.first_name = Faker::Name.first_name
   u.last_name = Faker::Name.last_name
-  u.birthdate = Faker::Time.between_dates(to: 18.year.from_now, from:  100.year.from_now, period: :day)
-  u.gender = %w(M F).sample
+  u.birthdate = Faker::Date.between_except(from: 40.year.ago, to: 18.year.ago, excepted: Date.today)
+  u.gender = %w(M F O).sample
   u.job = Job.all.sample
   u.city = City.all.sample
   u.role = "admin" if index == 0
