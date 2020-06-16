@@ -14,7 +14,7 @@
         <%= select_tag :age,  options_for_select(["Less than 25", "25-30", "30-35", "More than 35"], params[:age]), class: "form-control" , include_blank: "Age"%>
         </fieldset ><fieldset class=" col-3">
         <%= select_tag :gender,  options_for_select(["Female", "Male", "Other"], params[:gender]), class: "form-control" , include_blank: "Gender"%>
-        </fieldset ><fieldset class=" col-3">
+        </fieldset ><fieldset class="d-none col-3">
         <%= f.collection_select :interest, Interest.all, :id, :name, {selected:params[:interest], include_blank: "Interest"}, class: "form-control"  %>
         </fieldset ><fieldset class=" col-3">
         <%= f.collection_select :city, City.all, :id, :name, {selected:params[:city], include_blank: "City"}, class: "form-control" %>
@@ -33,7 +33,8 @@
 <!-- ENNND FILTER OPTIONS -->
 
 <!-- Card Profile -->
-<div class="cardProfile"><h1><%= "#{@matches.length} Results"%></h1>
+<div class="cardProfile">
+  <div class=""><h4 class="text-dark text-center mt-5"><%= "#{@matches.length} Results"%></h4></div>
 
   <div class="container-fluid mt-5 ml-2 mr-2 mb-5 justify-content-center">
    <div class="row justify-content-center">
