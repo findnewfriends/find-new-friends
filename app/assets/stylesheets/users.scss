@@ -6,7 +6,7 @@ p{
     color:#858796;
 }
 
-h3, h2{
+h1, h3, h2{
     color:#4e4e53;
 }
 
@@ -19,6 +19,19 @@ section.banner{
         border-radius: 7px;
         padding:10px;
         color:white;
+        position: relative;
+        a.settings{
+            position: absolute;
+            top: 16%;
+            right: 1%;
+            height: 100%;
+            i{
+                color: white;
+            }
+            i:hover{
+                opacity: 0.5;
+            }
+        }
     }
     div.box_avatar{
         display: flex;
@@ -28,11 +41,10 @@ section.banner{
     div.bio{
         padding-left: 2rem;
     }
+    div.settings{
+        margin-top: 1em;
+    }
 }
-//        position: absolute;
-//bottom: -30%;
-// left: 1%;
-// position: relative;
 
 // Send match request
 div.request{
@@ -82,16 +94,6 @@ section#historic_and_interest{
     border: 3px solid gray;
 }
 
-// Responsive
-@media screen and (min-width: 2000px){
-    section.banner{
-        div.box_avatar{
-            img{
-                margin-left: 10rem;
-            }
-        }
-    }
-}
 @media screen and (max-width: 767px){
     div.bio{
         text-align: center;
