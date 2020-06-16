@@ -1,0 +1,3 @@
+console.log("Index update js called");
+<% match_params = params.require(:match).permit(:matched_user) %>
+$('#request-button-user-<%=match_params[:matched_user].to_i%> ').html("<div class='btn btn-outline btn-sm text-uppercase mt-4 text-info'>Request sent</div>");

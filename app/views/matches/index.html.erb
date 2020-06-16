@@ -42,7 +42,7 @@
      <% @matches.each_with_index do |match,index| %>
      <% results_user = match.matched_user %>
      <% if match.score < 1 || true %>
-     <div class="card m-1 col-xl-3 col-sm-12 col-md-8 col-lg-5 shadow backgroundColorCard">
+     <div class="card m-1 col-xl-3 col-sm-12 col-md-8 col-lg-5 shadow backgroundColorCard" id="card-user-<%=results_user.id%>">
        <%= image_tag("avatar.jpg", class:'mt-4 img_profile') %>
        <div class="card-body">
          <h6 class="m-0 text-white text-center text-uppercase">
@@ -76,7 +76,7 @@
           </p>
           <hr>
           <div class="text-center">
-            <div class="">
+            <div class="" id="request-button-user-<%=results_user.id%>">
 
             <% if match.status == 1 %>
             <div class="btn btn-outline btn-sm text-uppercase mt-4 text-info">Request sent</div>
@@ -85,7 +85,7 @@
 
             <% else %>
               <% new_status = 1 %>
-              <%= form_with model: match do |f| %>
+              <%= form_with model: match, remote: true do |f| %>
               <%= f.hidden_field :user, :value => match.user.id %>
               <%= f.hidden_field :matched_user, :value => match.matched_user.id %>
               <%= f.hidden_field :status, :value => new_status %>

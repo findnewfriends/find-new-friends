@@ -16,3 +16,5 @@
 //= require activestorage
 //= require theme.min
 //= require staticPages
+//= require jquery3
+//= require jquery_ujs

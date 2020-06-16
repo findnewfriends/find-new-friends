@@ -59,6 +59,7 @@ class MatchesController < ApplicationController
       if @match.update(match_params)
         format.html { redirect_to matches_url, notice: 'Request was sent succesfully.' }
         format.json { render :show, status: :created, location: @match }
+        format.js { }
       else
         format.html { render :edit }
         format.json { render json: @match.errors, status: :unprocessable_entity }
