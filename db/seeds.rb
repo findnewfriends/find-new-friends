@@ -33,7 +33,7 @@ end
 
 
 #User
-number_of_users = 10
+number_of_users = 30
 number_of_users.times do |index|
   u = User.new
   u.email = "findnewfriends_#{index}@yopmail.com"

@@ -9,16 +9,16 @@
 
 <div class="d-inline-flex justify-content-center">
 
-        <fieldset class="col-2">
+        <fieldset class="col-3">
         <%= form_with local: true, url: matches_path, method: :get  do |f| %>
         <%= select_tag :age,  options_for_select(["Less than 25", "25-30", "30-35", "More than 35"], params[:age]), class: "form-control" , include_blank: "Age"%>
-        </fieldset ><fieldset class=" col-2">
+        </fieldset ><fieldset class=" col-3">
         <%= select_tag :gender,  options_for_select(["Female", "Male", "Other"], params[:gender]), class: "form-control" , include_blank: "Gender"%>
-        </fieldset ><fieldset class=" col-2">
+        </fieldset ><fieldset class=" col-3">
         <%= f.collection_select :interest, Interest.all, :id, :name, {selected:params[:interest], include_blank: "Interest"}, class: "form-control"  %>
-        </fieldset ><fieldset class=" col-2">
+        </fieldset ><fieldset class=" col-3">
         <%= f.collection_select :city, City.all, :id, :name, {selected:params[:city], include_blank: "City"}, class: "form-control" %>
-        </fieldset ><fieldset class=" col-2">
+        </fieldset ><fieldset class=" col-3">
         <%= f.submit "Filter" , class: "btn btn-info btn-block" %>
         </fieldset >
         <% end %>
@@ -39,20 +39,7 @@
    <div class="row justify-content-center">
      <!-- Match entries can have current_user in both user or matched_user column! -->
      <% @matches.each_with_index do |match,index| %>
-
-     <% if current_user == match.user %>
-        <% current_found_in_user_column = true %>
-        <% current_found_in_matched_user_column = false %>
-        <% results_user = match.matched_user %>
-     <% elsif current_user == match.matched_user %>
-        <% current_found_in_user_column = false %>
-        <% current_found_in_matched_user_column = true %>
-        <% results_user = match.user %>
-     <% else %>
-        <% puts "ERROR: current_user should be found in either match.user or match.matched_user !!!!" %>
-     <% end%>
-
-
+     <% results_user = match.matched_user %>
      <% if match.score < 1 || true %>
      <div class="card m-1 col-xl-3 col-sm-12 col-md-8 col-lg-5 shadow backgroundColorCard">
        <%= image_tag("avatar.jpg", class:'mt-4 img_profile') %>
@@ -90,18 +77,13 @@
           <div class="text-center">
             <div class="">
 
-            <% if match.status == 1 && current_found_in_user_column || match.status == 2 && current_found_in_matched_user_column %>
+            <% if match.status == 1 %>
             <div class="btn btn-outline btn-sm text-uppercase mt-4 text-info">Request sent</div>
-            <% elsif match.status == 2 && current_found_in_user_column || match.status == 1 && current_found_in_matched_user_column %>
+            <% elsif match.status == 2 %>
             <div class="btn btn-outline btn-sm text-uppercase mt-4 text-warning">Request received</div>
 
             <% else %>
-              <% if current_found_in_user_column %>
               <% new_status = 1 %>
-              <% else %>
-              <% new_status = 2 %>
-              <% end%>
-
               <%= form_with model: match do |f| %>
               <%= f.hidden_field :user, :value => match.user.id %>
               <%= f.hidden_field :matched_user, :value => match.matched_user.id %>
