@@ -53,12 +53,11 @@ class MatchesController < ApplicationController
 
 
   def update
-    puts "---------------------------------------------o-o-o-o-o---o-o-o-o-o- params are #{params}"
     puts "---------------------------------------------o-o-o-o-o---o-o-o-o-o- match_params are #{match_params}"
     respond_to do |format|
       if @match.update(match_params)
-        # format.html { redirect_to matches_url, notice: 'Request was sent succesfully.' }
-        # format.json { render :show, status: :created, location: @match }
+        format.html { redirect_to matches_url, notice: 'Request was sent succesfully.' }
+        format.json { render :show, status: :created, location: @match }
         format.js { puts "======== respond_to detected js format!"}
       else
         format.html { render :edit }
