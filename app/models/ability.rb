@@ -4,7 +4,7 @@ class Ability
   include CanCan::Ability
 
   def initialize(user)
-    puts "\nO----------------XXXX----------------THIS IS A CONSOLE NEW PAGE LOAD SEPARATOR-----------------XXXX---------------O\n\n"
+    puts "\n\n\n\n\n\n\n\nO----------------XXXX----------------THIS IS A CONSOLE NEW PAGE LOAD SEPARATOR-----------------XXXX---------------O\n\n"
     puts user
     # user ||= User.new # guest user (not logged in)
 
