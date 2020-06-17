@@ -72,7 +72,7 @@
           </p>
           <hr>
           <p class="text-dark text-center">
-            Score: <%= (1/(match.score+0.2)).round(2) %>
+            Score: <%= [5-match.score,0].max.round(2) %>
           </p>
           <hr>
           <div class="text-center">
