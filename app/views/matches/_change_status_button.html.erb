@@ -1,4 +1,7 @@
-<%= puts "Current status for match #{match.id} is #{match.status}" %>
+<%= puts  "Current status for match #{match.id} is #{match.status}" %>
+<% puts "======= detected status_if_clicked=#{status_if_clicked} for match #{match.id} in partial" %>
+
+<% status_if_clicked = (match.status-1).abs %>
 
 <% if match.status == 2 %>
   <div class="btn btn-outline btn-sm text-uppercase mt-4 text-warning">Request received</div>
@@ -10,7 +13,6 @@
       <%= f.hidden_field :matched_user, :value => match.matched_user.id %>
       <%= f.hidden_field :status_if_clicked, :value => status_if_clicked %>
 
-      <% puts "======= detected status_if_clicked=#{status_if_clicked}"%>
       <% if status_if_clicked == 1 %>
         <%= f.hidden_field :status, :value => 1 %>
         <%= f.submit "Send match request" , class: "btn btn-outline btn-sm text-uppercase mt-4" %>

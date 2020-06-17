@@ -1,8 +1,12 @@
 console.log("Index update js called");
 <% puts "=========== matches update.js.erb was called, params received are #{params}"%>
 <% match =  Match.find(params[:id].to_i) %>
+<% status_if_clicked =  params.require(:match)[:status_if_clicked].to_i %>
+<% puts "================= status_if_clicked in update.js is #{status_if_clicked}"  %>
 element = document.querySelector('#request-button-match-<%=params[:id].to_i%>');
-element.innerHTML = "<%= j render 'change_status_button', match:match, status_if_clicked:(match.status-1).abs %>"
+element.innerHTML = "<%= j render 'change_status_button', match:match, status_if_clicked:status_if_clicked %>"
+// element.insertAdjacentHTML('beforeend', "<%= j render 'change_status_button', match:match, status_if_clicked:status_if_clicked %>");
+// element.innerHTML = "<%= j render 'change_status_button', match:match, status_if_clicked:(match.status-1).abs %>"
 
 
 
