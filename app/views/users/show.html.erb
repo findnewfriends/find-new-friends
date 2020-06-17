@@ -1,41 +1,44 @@
-
 <section class="banner container">
     <h1 class='text-center title mb-5'>
         <i class="fas fa-user-circle"></i>
         Profile Page
         <a href="<%= edit_user_registration_path %>" class="settings"><i class="fas fa-cog"></i></a>
-        
+
     </h1>
-    <div class='row'>   
+    <div class='row'>
         <div class="box_avatar col-xl-2 col-sm-12 col-md-6 col-lg-2">
+            <% if current_user.avatar.attached? %>
+            <%= image_tag  current_user.avatar, class:"avatar" %>
+            <%else%>
             <%= image_tag('profile_avatar', class: "avatar")%>
+            <%end%>
         </div>
         <div class="bio col-xl-5 col-sm-12 col-md-6 col-lg-5 mt-5">
             <h3>
                 <% if current_user.first_name && current_user.last_name %>
-                    <%= current_user.first_name + ' ' + current_user.last_name %>
+                <%= current_user.first_name + ' ' + current_user.last_name %>
                 <% else %>
-                    No name yet
+                No name yet
                 <% end%>
             </h3>
             <p>
                 <% if current_user.birthdate%>
-                    <%= current_user.birthdate %>
-                <% else %>        
-                    No birthdate yet
+                <%= current_user.birthdate %>
+                <% else %>
+                No birthdate yet
                 <% end%>
             </p>
             <p>
                 <i class="fas fa-map-marker-alt"></i>
                 <% if current_user.city %>
-                    <%= current_user.city.name %>
+                <%= current_user.city.name %>
                 <% else %>
-                    No city yet
+                No city yet
                 <% end %>
             </p>
             <p>
                 <% 3.times do %>
-                    <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
                 <% end %>
                 <i class="fas fa-star-half-alt"></i>
                 <i class="far fa-star"></i>
@@ -45,9 +48,9 @@
             <h3>Who I am ?</h3>
             <p>
                 <% if current_user.description%>
-                    <%= current_user.description %>
+                <%= current_user.description %>
                 <% else %>
-                    No description yet
+                No description yet
                 <% end%>
             </p>
         </div>
@@ -60,25 +63,25 @@
 <section class="container match">
     <h2 class="mb-5 text-center">New match requests</h2>
     <% if current_user.matches %>
-        <p class="text-center">No match request yet</p>
+    <p class="text-center">No match request yet</p>
     <% end %>
     <% current_user.matches.each do |match| %>
-        <% if match.status == 2 %>
-            <div class="request row">
-                <%= image_tag('avatar_2', class: "avatar") %>
-                <div class='box_bio col-xl-5 col-sm-12 col-md-4 col-lg-5'>
-                    <div class='bio'>
-                        <h3><%= match.matched_user.first_name %></h3>
-                        <p>Would you like to talk about Football ?</p>
-                        <a href="<%= match_path(match.matched_user.id) %>" class='btn btn-sm btn-primary p-2 mb-3'>See profile</a>
-                    </div>
-                </div>
-                <div class='buttons col-xl-4 col-sm-12 col-md-4 col-lg-5'>
-                    <a href="#" class='btn btn-sm btn-success mr-2 p-2'>Accept Match Request</a>
-                    <a href="#" class='btn btn-sm btn-danger p-2'>Refuse Match Request</a>
-                </div>
+    <% if match.status == 2 %>
+    <div class="request row">
+        <%= image_tag('avatar_2', class: "avatar") %>
+        <div class='box_bio col-xl-5 col-sm-12 col-md-4 col-lg-5'>
+            <div class='bio'>
+                <h3><%= match.matched_user.first_name %></h3>
+                <p>Would you like to talk about Football ?</p>
+                <a href="<%= match_path(match.matched_user.id) %>" class='btn btn-sm btn-primary p-2 mb-3'>See profile</a>
             </div>
-        <% end %>
+        </div>
+        <div class='buttons col-xl-4 col-sm-12 col-md-4 col-lg-5'>
+            <a href="#" class='btn btn-sm btn-success mr-2 p-2'>Accept Match Request</a>
+            <a href="#" class='btn btn-sm btn-danger p-2'>Refuse Match Request</a>
+        </div>
+    </div>
+    <% end %>
     <% end %>
 </section>
 
@@ -100,43 +103,42 @@
         <div class='col-lg-6 col-xl-6  col-sm-12 col-md-12 ml-lg-5 ml-xl-5 historic'>
             <h2 class='text-center mb-5 mt-4'>Match history</h2>
             <% if current_user.matches%>
-                <p class='text-center'> No match history yet<p>
-            <% else %>
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th scope="col">Profile</th>
-                            <th scope="col">Date Match</th>
-                            <th scope="col">Contact</th>
-                            <th scope="col">Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                    
-                    <% current_user.matches.each do |match| %>
-                    <% if match.status == 0%>
-                        <tr>
-                            <th scope="row"><%= match.matched_user.first_name %></th>
-                            <td><%= match.matched_user.birthdate %></td>
-                            <td>
-                                <a href="facebook.com">Facebook</a>
-                                <p>Discord :</p>
-                                <p>Instagram: </p>
-                            </td>
-                            <td>
-                                <a href="<%= match_path(match.matched_user.id) %>" class='btn btn-sm p-2 btn-primary mb-2'>See profile</a>
-                                <a href="#" class='btn btn-sm p-2 btn-success'>Do a quizz with me !</a>
-                            </td>
-                        </tr>
-                    <% end %>
-                    <% end %>
+            <p class='text-center'> No match history yet<p>
+                    <% else %>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">Profile</th>
+                                <th scope="col">Date Match</th>
+                                <th scope="col">Contact</th>
+                                <th scope="col">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
 
-                    </tbody>    
-                </table>
-            <% end%>
+                            <% current_user.matches.each do |match| %>
+                            <% if match.status == 0%>
+                            <tr>
+                                <th scope="row"><%= match.matched_user.first_name %></th>
+                                <td><%= match.matched_user.birthdate %></td>
+                                <td>
+                                    <a href="facebook.com">Facebook</a>
+                                    <p>Discord :</p>
+                                    <p>Instagram: </p>
+                                </td>
+                                <td>
+                                    <a href="<%= match_path(match.matched_user.id) %>" class='btn btn-sm p-2 btn-primary mb-2'>See profile</a>
+                                    <a href="#" class='btn btn-sm p-2 btn-success'>Do a quizz with me !</a>
+                                </td>
+                            </tr>
+                            <% end %>
+                            <% end %>
+
+                        </tbody>
+                    </table>
+                    <% end%>
 
         </div>
     </div>
-    
-</section> 
 
+</section>
