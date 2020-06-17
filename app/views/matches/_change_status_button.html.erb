@@ -2,6 +2,8 @@
 
 <% if match.status == 2 %>
   <div class="btn btn-outline btn-sm text-uppercase mt-4 text-warning">Request received</div>
+<% elsif match.status == 3 %>
+  <div class="btn btn-sm text-uppercase mt-4 text-dark">You are connected</div>
 <% else %>
     <%= form_with model: match, remote: true do |f| %>
       <%= f.hidden_field :user, :value => match.user.id %>

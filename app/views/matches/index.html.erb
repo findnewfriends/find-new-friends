@@ -81,7 +81,9 @@
 
 
 
+            <% unless match.status == 4 %>
             <%= render 'change_status_button', match:match, status_if_clicked:(match.status-1).abs  %>
+            <% end %>
 
           </div>
             <%= link_to "See profile", user_path(results_user.id), class:"btn btn-outline btn-sm text-uppercase mt-4" %>
