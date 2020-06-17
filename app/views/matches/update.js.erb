@@ -1,7 +1,10 @@
 console.log("Index update js called");
-<% puts "=========== matches update.js.erb was called"%>
-<% puts "=========== params received by update.js are #{params}"%>
-<% #status_if_clicked =  params.require(:match)[:status_if_clicked].to_i %>
+<% puts "=========== matches update.js.erb was called, params received are #{params}"%>
 <% match =  Match.find(params[:id].to_i) %>
+element = document.querySelector('#request-button-match-<%=params[:id].to_i%>');
+element.innerHTML = "<%= j render 'change_status_button', match:match, status_if_clicked:(match.status-1).abs %>"
 
-$('#request-button-match-<%=params[:id].to_i%> ').html("<%= j render 'change_status_button', match:match, status_if_clicked:(match.status-1).abs %>");
+
+
+// jQuery form
+// $('#request-button-match-<%=params[:id].to_i%> ').html("<%= j render 'change_status_button', match:match, status_if_clicked:(match.status-1).abs %>");
