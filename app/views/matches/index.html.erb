@@ -78,20 +78,10 @@
           <div class="text-center">
             <div class="" id="request-button-match-<%=match.id%>">
 
-            <% if match.status == 1 %>
-            <div class="btn btn-outline btn-sm text-uppercase mt-4 text-info">Request sent</div>
-            <% elsif match.status == 2 %>
-            <div class="btn btn-outline btn-sm text-uppercase mt-4 text-warning">Request received</div>
 
-            <% else %>
-              <% new_status = 1 %>
-              <%= form_with model: match, remote: true do |f| %>
-              <%= f.hidden_field :user, :value => match.user.id %>
-              <%= f.hidden_field :matched_user, :value => match.matched_user.id %>
-              <%= f.hidden_field :status, :value => new_status %>
-              <%= f.submit "Send match request" , class: "btn btn-outline btn-sm text-uppercase mt-4" %>
-              <% end %>
-            <% end %>
+
+
+            <%= render 'change_status_button', match:match, status_if_clicked:(match.status-1).abs  %>
 
           </div>
             <%= link_to "See profile", user_path(results_user.id), class:"btn btn-outline btn-sm text-uppercase mt-4" %>
