@@ -1,31 +1,27 @@
 
 <!-- FILTER OPTIONS -->
 <div class="container-fluid bg-light pt-4">
+
 <div class="text-center">
   <h1 class="mb-3 text-info">Find your new mate today! </h1>
   <p class="text-secondary">It's as easy as it looks ! Just select the field you are looking for and click search <i class="far fa-smile-beam"></i>.</p>
 </div>
 	<div class="row align-items-center justify-content-center p-3">
 
-<div class="d-inline-flex justify-content-center">
 
-        <fieldset class="m-1">
-        <%= form_with local: true, url: matches_path, method: :get  do |f| %>
+    <div class="d-inline-flex justify-content-center">
+
+      <fieldset class="d-inline-flex m-1" style="display: inline;">
+        <%= form_with local: true, url: matches_path, method: :get   do |f| %>
         <%= select_tag :age,  options_for_select(["Less than 25", "25-30", "30-35", "More than 35"], params[:age]), class: "form-control" , include_blank: "Age"%>
-        </fieldset ><fieldset class=" m-1">
         <%= select_tag :gender,  options_for_select(["Female", "Male", "Other"], params[:gender]), class: "form-control" , include_blank: "Gender"%>
-        </fieldset ><fieldset class="d-none m-1">
         <%= f.collection_select :interest, Interest.all, :id, :name, {selected:params[:interest], include_blank: "Interest"}, class: "form-control"  %>
-        </fieldset ><fieldset class="m-1">
         <%= f.collection_select :city, City.all, :id, :name, {selected:params[:city], include_blank: "City"}, class: "form-control" %>
-        </fieldset ><fieldset class="m-1">
         <%= f.submit "Filter" , class: "btn btn-info btn-block" %>
-        </fieldset >
         <% end %>
-      </div>
+      </fieldset >
 
-
-
+    </div>
 
   </div>
 </div>
@@ -37,28 +33,28 @@
   <div class=""><h4 class="text-dark text-center mt-5"><%= "#{@matches.length} Results"%></h4></div>
 
   <div class="container-fluid mt-5 ml-2 mr-2 mb-5 justify-content-center">
-   <div class="row justify-content-center">
-     <!-- Match entries can have current_user in both user or matched_user column! -->
-     <% @matches.each_with_index do |match,index| %>
-     <% results_user = match.matched_user %>
-     <% if match.score < 1 || true %>
-     <div class="card m-1 col-xl-3 col-sm-12 col-md-8 col-lg-5 shadow backgroundColorCard" id="card-user-<%=results_user.id%>">
-       <%= image_tag("avatar.jpg", class:'mt-4 img_profile') %>
-       <div class="card-body">
-         <h6 class="m-0 text-white text-center text-uppercase">
-           <% if results_user.first_name && results_user.last_name%>
-           <%= "#{results_user.first_name} #{results_user.last_name}" %>
-           <% else %>
-          No name yet
-          <% end%>
-           </h6>
+    <div class="row justify-content-center">
+      <!-- Match entries can have current_user in both user or matched_user column! -->
+      <% @matches.each_with_index do |match,index| %>
+      <% results_user = match.matched_user %>
+      <% unless match.status == 4 %>
+      <div class="card m-1 col-xl-3 col-sm-12 col-md-8 col-lg-5 shadow backgroundColorCard" id="card-user-<%=results_user.id%>">
+        <%= image_tag("avatar.jpg", class:'mt-4 img_profile') %>
+        <div class="card-body">
+          <h6 class="m-0 text-white text-center text-uppercase">
+            <% if results_user.first_name && results_user.last_name%>
+            <%= "#{results_user.first_name} #{results_user.last_name}" %>
+            <% else %>
+            No name yet
+            <% end%>
+          </h6>
           <h6 class="m-0 mt-2 text-white text-center"><i class="fas fa-map-marker-alt text-gray-300" id="iconLocation"></i>
-           <% if results_user.city%>
+            <% if results_user.city%>
             <%= results_user.city.name %>
-          <%else %>
-          No city yet
-          <% end%>
-           </h6>
+            <%else %>
+            No city yet
+            <% end%>
+          </h6>
           <hr>
           <div class="text-center">
             <h6 class="m-0 mb-2 text-white text-uppercase">Bio</h6>
@@ -71,37 +67,30 @@
             <% end%>
           </p>
           <hr>
-          <p class="text-white text-center">
-            Score: <%= (1/(match.score+0.2)).round(2) %>
+
+
+          <p class="text-dark text-center">
+            Score: <%= [5-match.score,0].max.round(2) %>
+
           </p>
           
           <div class="text-center">
             <div class="" id="request-button-match-<%=match.id%>">
 
-            <% if match.status == 1 %>
-            <div class="btn btn-outline btn-sm text-uppercase mt-4 text-info">Request sent</div>
-            <% elsif match.status == 2 %>
-            <div class="btn btn-outline btn-sm text-uppercase mt-4 text-warning">Request received</div>
 
-            <% else %>
-              <% new_status = 1 %>
-              <%= form_with model: match, remote: true do |f| %>
-              <%= f.hidden_field :user, :value => match.user.id %>
-              <%= f.hidden_field :matched_user, :value => match.matched_user.id %>
-              <%= f.hidden_field :status, :value => new_status %>
-              <%= f.submit "Send match request" , class: "btn btn-outline btn-sm text-uppercase mt-4" %>
-              <% end %>
-            <% end %>
+              <% status_if_clicked = (match.status-1).abs %>
+              <%= render 'change_status_button', match:match, status_if_clicked:status_if_clicked  %>
 
-          </div>
-            <%= link_to "See profile", user_path(results_user.id), class:"btn btn-outline btn-sm text-uppercase mt-4" %>
+
+            </div>
+            <%= link_to "See profile", match_path(match.id), class:"btn btn-outline btn-sm text-uppercase mt-4" %>
           </div>
         </div>
       </div>
-    <% end %>
-    <% end %>
+      <% end %>
+      <% end %>
 
-    <!-- End first card profile-->
+      <!-- End first card profile-->
     </div>
   </div>
 </div>

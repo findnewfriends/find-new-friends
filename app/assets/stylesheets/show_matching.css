@@ -29,3 +29,11 @@
 .tableInfoUser th, td{
   color:white;
 }
+
+
+fieldset > form > * {
+  vertical-align: middle;
+  width: auto !important;
+  display: inline !important;
+  margin: 0.25rem;
+}
