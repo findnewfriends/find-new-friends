@@ -72,3 +72,7 @@ section {
     margin-bottom: 10px;
   }
 }
+
+section#footer{
+     border-top: 1px solid rgb(233, 230, 230);
+ }
