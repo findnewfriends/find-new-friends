@@ -51,7 +51,7 @@
             <tbody>
               <tr>
                 <td scope="row"><%= @user.interests.count %></td>
-                <td><%= time_ago_in_words(@user.last_sign_in_at) %></td>
+                <td><%= time_ago_in_words(@user.last_sign_in_at) if @user.last_sign_in_at %></td>
               </tr>
             </tbody>
           </table>
