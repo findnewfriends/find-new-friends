@@ -1,0 +1,28 @@
+<div class="jumbotron jumbotron-fluid" id="jumbotronActivity">
+  <div class="container mt-5">
+    <h1 class="display-4 text-white">Browse activities</h1>
+    <p class="lead text-white">See interests, discover new ones & see who has the same hobbies as you! <i class="far fa-grin"></i></p>
+  </div>
+</div>
+<!-- START DIV CONTAINER -->
+<div class="container">
+<!-- START DIV CARD-DECK -->
+  <div class="card-deck mt-5 mb-5">
+  <% @interests.each do |interest|%>
+    <!-- START DIV CARD -->
+    <div class="card shadow mb-4" style="min-width:21rem; max-width:21rem;">
+      <div class="card-body text-center">
+        <h3 class="card-title text-secondary"> <%= interest.name %></h3>
+        <a href="#" class="btn btn-info btnFavorite mb-3">Add to favorite</a>
+        <p class="card-text">Number of time interest was added to favorite: 25</p>
+        <hr>
+        <a href="#">See who likes this interest</a>
+      </div>
+    </div>
+    <!-- END DIV CARD -->
+  <% end %>
+  </div>
+  <!-- END DIV CARD-DECK -->
+</div>
+<!-- END DIV CONTAINER -->
+

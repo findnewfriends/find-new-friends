@@ -1,11 +1,13 @@
 
 <!-- FILTER OPTIONS -->
 <div class="container-fluid bg-light pt-4">
-  <div class="text-center">
-    <h2 class="mb-3 text-info">Find your new mate today! </h2>
-    <p class="text-secondary">It's as easy as it looks ! Just select the field you are looking for and click search <i class="far fa-smile-beam"></i>.</p>
-  </div>
-  <div class="row align-items-center justify-content-center p-3">
+
+<div class="text-center">
+  <h1 class="mb-3 text-info">Find your new mate today! </h1>
+  <p class="text-secondary">It's as easy as it looks ! Just select the field you are looking for and click search <i class="far fa-smile-beam"></i>.</p>
+</div>
+	<div class="row align-items-center justify-content-center p-3">
+
 
     <div class="d-inline-flex justify-content-center">
 
@@ -20,9 +22,6 @@
       </fieldset >
 
     </div>
-
-
-
 
   </div>
 </div>
@@ -68,10 +67,13 @@
             <% end%>
           </p>
           <hr>
+
+
           <p class="text-dark text-center">
             Score: <%= [5-match.score,0].max.round(2) %>
+
           </p>
-          <hr>
+          
           <div class="text-center">
             <div class="" id="request-button-match-<%=match.id%>">
 

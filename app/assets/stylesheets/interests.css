@@ -1,0 +1,18 @@
+.btnFavorite{
+  background-color:#BE93C5;
+  border-color: #BE93C5;
+}
+
+.btnFavorite:hover{
+  background-color:#a57eac;
+  border-color: #a57eac;
+}
+
+#jumbotronActivity{
+  background-image: linear-gradient(to bottom, rgba(0.2,0,0,0.3) 0%,rgba(0,0,0,0.1) 100%),
+  url("musicfriends.jpeg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 350px;
+}
