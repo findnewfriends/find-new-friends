@@ -8,7 +8,10 @@ class User < ApplicationRecord
   belongs_to :city, optional: true
   belongs_to :job , optional: true
 
-  has_many :feedbacks
+  # has_many :feedbacks
+  has_many :references, class_name: "Feedback", foreign_key: "recipient_id"
+  has_many :given_references, class_name: "Feedback", foreign_key: "author_id"
+
   has_many :flags
   has_many :requests
 

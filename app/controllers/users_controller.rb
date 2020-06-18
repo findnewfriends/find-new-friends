@@ -1,9 +1,13 @@
 class UsersController < ApplicationController
 
   def show
+    @user = User.find(params[:id])
+    @match_requests_received = Match.all.where(matched_user:@user,status:1)
+    @match_requests_sent = Match.all.where(user:@user,status:1)
     if @user && @user.admin?
-      #@matches = Match.all
-      #@users = User.all
+      @matches = Match.all
+      @users = User.all
+      @interest = Interest.all
     end
   end
 
