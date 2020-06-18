@@ -1,0 +1,31 @@
+<%= puts  "Current status for match #{match.id} is #{match.status}" %>
+<% puts "======= detected status_if_clicked=#{status_if_clicked} for match #{match.id} in partial" %>
+
+<% status_if_clicked = (match.status-1).abs %>
+
+<% if match.status == 2 %>
+  <div class="btn btn-outline btn-sm text-uppercase mt-4 text-warning">Request received</div>
+<% elsif match.status == 3 %>
+  <div class="btn btn-sm text-uppercase mt-4 text-dark">You are connected</div>
+<% else %>
+    <%= form_with model: match, remote: true do |f| %>
+      <%= f.hidden_field :user, :value => match.user.id %>
+      <%= f.hidden_field :matched_user, :value => match.matched_user.id %>
+      <%= f.hidden_field :status_if_clicked, :value => status_if_clicked %>
+
+      <% if status_if_clicked == 1 %>
+        <%= f.hidden_field :status, :value => 1 %>
+        <%= f.submit "Send match request" , class: "btn btn-outline btn-sm text-uppercase mt-4" %>
+
+
+      <% elsif status_if_clicked == 0 %>
+        <%= f.hidden_field :status, :value => 0 %>
+        <%= f.submit "Cancel match request" , data: { confirm: "Are you sure?" }, class: "btn btn-outline btn-sm text-uppercase mt-4 text-info" %>
+
+      <% else %>
+        <% puts "status_if_clicked= #{status_if_clicked} for match not known, should be in 0-4 range" %>
+      <% end %>
+
+    <% end %>
+
+<% end %>

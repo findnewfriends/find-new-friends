@@ -1,4 +1,14 @@
 console.log("Index update js called");
-<% puts "=========== matches update.js.erb was called"%>
-<% match_params = params.require(:match).permit(:matched_user) %>
-$('#request-button-match-<%=params[:id].to_i%> ').html("<div class='btn btn-outline btn-sm text-uppercase mt-4 text-info'>Request sent</div>");
+<% puts "=========== matches update.js.erb was called, params received are #{params}"%>
+<% match =  Match.find(params[:id].to_i) %>
+<% status_if_clicked =  params.require(:match)[:status_if_clicked].to_i %>
+<% puts "================= status_if_clicked in update.js is #{status_if_clicked}"  %>
+element = document.querySelector('#request-button-match-<%=params[:id].to_i%>');
+element.innerHTML = "<%= j render 'change_status_button', match:match, status_if_clicked:status_if_clicked %>"
+// element.insertAdjacentHTML('beforeend', "<%= j render 'change_status_button', match:match, status_if_clicked:status_if_clicked %>");
+// element.innerHTML = "<%= j render 'change_status_button', match:match, status_if_clicked:(match.status-1).abs %>"
+
+
+
+// jQuery form
+// $('#request-button-match-<%=params[:id].to_i%> ').html("<%= j render 'change_status_button', match:match, status_if_clicked:(match.status-1).abs %>");
