@@ -7,18 +7,18 @@
 
             <div class='row p-4'>
                 <div class="box_avatar mr-2 col-xl-2 col-sm-8 col-md-6 col-lg-2">
-                    <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, class: 'form-signin' }) do |f| %>
+                    <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, class: 'form-signin ' }) do |f| %>
                     <%= f.file_field :avatar %>
-                    <%= image_tag('profile_avatar', class: "avatar")%>
+                    <%= image_tag('profile_avatar', class: "avatarMatchUser")%>
                 </div>
-                <div class="bioMatchUser ml-5 mt-4 col-xl-4 col-sm-12 col-md-4 col-lg-3">
-                    <h3 class="text-white">
+                <div class="bioMatchUser ml-5 mt-5 col-xl-4 col-sm-12 col-md-4 col-lg-3">
+                    <h1 class="text-white">
                         <% if @user.first_name && @user.last_name%>
                         <%= @user.first_name  + ' ' + @user.last_name %>
                         <% else%>
                         No name yet
                         <% end%>
-                    </h3>
+                    </h1>
                     <p>
                         <% if @user.birthdate %>
                         <%= @user.birthdate %>
