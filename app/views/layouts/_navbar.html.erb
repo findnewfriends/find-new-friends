@@ -3,8 +3,8 @@
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <a class="navbar-brand" href="<%= root_path%>">
-    <img src="http://tinygraphs.com/spaceinvaders/FindNewFriends?theme=duskfalling&numcolors=4&size=220&fmt=svg" width="30" height="30" class="d-inline-block align-top" alt="">
-    Find New Friends
+    <%= image_tag("favicon.png", class:'d-inline-block align-top', style:"width:25px;height:25px;") %>
+    FindNewFriends
   </a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -13,6 +13,9 @@
     <ul class="navbar-nav w-100">
       <li class="nav-item">
         <a class="nav-link" href="<%= matches_path %>">Find a Match</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="<%= interests_path %>">Activities</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="<%= user_path(current_user.id) %>">My Profile</a>
