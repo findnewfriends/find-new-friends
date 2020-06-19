@@ -15,7 +15,7 @@
  *= require home
  *= require footer
  *= require users
- *= require match_profile
+ *= require match_index
  *= require show_match
  *= require show_matching
  *= require settings
